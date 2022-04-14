@@ -1,0 +1,1519 @@
+<html>
+
+<head>
+    <style>
+        body {
+            transition: opacity ease-in 0.2s;
+        }
+
+        body[unresolved] {
+            opacity: 0;
+            display: block;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+
+    <style id="distill-prerendered-styles" type="text/css">
+        /*
+       * Copyright 2018 The Distill Template Authors
+       *
+       * Licensed under the Apache License, Version 2.0 (the "License");
+       * you may not use this file except in compliance with the License.
+       * You may obtain a copy of the License at
+       *
+       *      http://www.apache.org/licenses/LICENSE-2.0
+       *
+       * Unless required by applicable law or agreed to in writing, software
+       * distributed under the License is distributed on an "AS IS" BASIS,
+       * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       * See the License for the specific language governing permissions and
+       * limitations under the License.
+       */
+
+        html {
+            font-size: 14px;
+            line-height: 1.6em;
+            /* font-family: "Libre Franklin", "Helvetica Neue", sans-serif; */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+            /*, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+            text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        @media(min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+        }
+
+        body {
+            margin: 0;
+        }
+
+        a {
+            color: #004276;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        table th {
+            text-align: left;
+        }
+
+        table thead {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        table thead th {
+            padding-bottom: 0.5em;
+        }
+
+        table tbody :first-child td {
+            padding-top: 0.5em;
+        }
+
+        pre {
+            overflow: auto;
+            max-width: 100%;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+
+        sup,
+        sub {
+            vertical-align: baseline;
+            position: relative;
+            top: -0.4em;
+            line-height: 1em;
+        }
+
+        sub {
+            top: 0.4em;
+        }
+
+        .kicker,
+        .marker {
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* Headline */
+
+        @media(min-width: 1024px) {
+            d-title h1 span {
+                display: block;
+            }
+        }
+
+        /* Figure */
+
+        figure {
+            position: relative;
+            margin-bottom: 2.5em;
+            margin-top: 1.5em;
+        }
+
+        /* figcaption+figure {} */
+
+        figure img {
+            width: 100%;
+        }
+
+        /* figure svg text,
+        figure svg tspan {} */
+
+        figcaption,
+        .figcaption {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 12px;
+            line-height: 1.5em;
+        }
+
+        @media(min-width: 1024px) {
+
+            figcaption,
+            .figcaption {
+                font-size: 13px;
+            }
+        }
+
+        figure.external img {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+            padding: 18px;
+            box-sizing: border-box;
+        }
+
+        figcaption a {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        figcaption b,
+        figcaption strong {
+            font-weight: 600;
+            color: rgba(0, 0, 0, 1.0);
+        }
+
+        /*
+       * Copyright 2018 The Distill Template Authors
+       *
+       * Licensed under the Apache License, Version 2.0 (the "License");
+       * you may not use this file except in compliance with the License.
+       * You may obtain a copy of the License at
+       *
+       *      http://www.apache.org/licenses/LICENSE-2.0
+       *
+       * Unless required by applicable law or agreed to in writing, software
+       * distributed under the License is distributed on an "AS IS" BASIS,
+       * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       * See the License for the specific language governing permissions and
+       * limitations under the License.
+       */
+
+        @supports not (display: grid) {
+
+            .base-grid,
+            distill-header,
+            d-title,
+            d-abstract,
+            d-article,
+            d-appendix,
+            distill-appendix,
+            d-byline,
+            d-footnote-list,
+            d-citation-list,
+            distill-footer {
+                display: block;
+                padding: 8px;
+            }
+        }
+
+        .base-grid,
+        distill-header,
+        d-title,
+        d-abstract,
+        d-article,
+        d-appendix,
+        distill-appendix,
+        d-byline,
+        d-footnote-list,
+        d-citation-list,
+        distill-footer {
+            display: grid;
+            justify-items: stretch;
+            grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
+            grid-column-gap: 8px;
+        }
+
+        .grid {
+            display: grid;
+            grid-column-gap: 8px;
+        }
+
+        @media(min-width: 768px) {
+
+            .base-grid,
+            distill-header,
+            d-title,
+            d-abstract,
+            d-article,
+            d-appendix,
+            distill-appendix,
+            d-byline,
+            d-footnote-list,
+            d-citation-list,
+            distill-footer {
+                grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
+                grid-column-gap: 16px;
+            }
+
+            .grid {
+                grid-column-gap: 16px;
+            }
+        }
+
+        @media(min-width: 1000px) {
+
+            .base-grid,
+            distill-header,
+            d-title,
+            d-abstract,
+            d-article,
+            d-appendix,
+            distill-appendix,
+            d-byline,
+            d-footnote-list,
+            d-citation-list,
+            distill-footer {
+                grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+                grid-column-gap: 16px;
+            }
+
+            .grid {
+                grid-column-gap: 16px;
+            }
+        }
+
+        @media(min-width: 1180px) {
+
+            .base-grid,
+            distill-header,
+            d-title,
+            d-abstract,
+            d-article,
+            d-appendix,
+            distill-appendix,
+            d-byline,
+            d-footnote-list,
+            d-citation-list,
+            distill-footer {
+                grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+                grid-column-gap: 32px;
+            }
+
+            .grid {
+                grid-column-gap: 32px;
+            }
+        }
+
+
+
+
+        .base-grid {
+            grid-column: screen;
+        }
+
+        /* .l-body,
+      d-article > *  {
+        grid-column: text;
+      }
+      
+      .l-page,
+      d-title > *,
+      d-figure {
+        grid-column: page;
+      } */
+
+        .l-gutter {
+            grid-column: gutter;
+        }
+
+        .l-text,
+        .l-body {
+            grid-column: text;
+        }
+
+        .l-page {
+            grid-column: page;
+        }
+
+        .l-body-outset {
+            grid-column: middle;
+        }
+
+        .l-page-outset {
+            grid-column: page;
+        }
+
+        .l-screen {
+            grid-column: screen;
+        }
+
+        .l-screen-inset {
+            grid-column: screen;
+            padding-left: 16px;
+            padding-left: 16px;
+        }
+
+
+        /* Aside */
+
+        d-article aside {
+            grid-column: gutter;
+            font-size: 12px;
+            line-height: 1.6em;
+            color: rgba(0, 0, 0, 0.6)
+        }
+
+        @media(min-width: 768px) {
+            aside {
+                grid-column: gutter;
+            }
+
+            .side {
+                grid-column: gutter;
+            }
+        }
+
+        /*
+       * Copyright 2018 The Distill Template Authors
+       *
+       * Licensed under the Apache License, Version 2.0 (the "License");
+       * you may not use this file except in compliance with the License.
+       * You may obtain a copy of the License at
+       *
+       *      http://www.apache.org/licenses/LICENSE-2.0
+       *
+       * Unless required by applicable law or agreed to in writing, software
+       * distributed under the License is distributed on an "AS IS" BASIS,
+       * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       * See the License for the specific language governing permissions and
+       * limitations under the License.
+       */
+
+        d-title {
+            padding: 2rem 0 1.5rem;
+            contain: layout style;
+            overflow-x: hidden;
+        }
+
+        @media(min-width: 768px) {
+            d-title {
+                padding: 4rem 0 1.5rem;
+            }
+        }
+
+        d-title h1 {
+            grid-column: text;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.1em;
+            margin: 0 0 0.5rem;
+        }
+
+        @media(min-width: 768px) {
+            d-title h1 {
+                font-size: 50px;
+            }
+        }
+
+        d-title p {
+            font-weight: 300;
+            font-size: 1.2rem;
+            line-height: 1.55em;
+            grid-column: text;
+        }
+
+        d-title .status {
+            margin-top: 0px;
+            font-size: 12px;
+            color: #009688;
+            opacity: 0.8;
+            grid-column: kicker;
+        }
+
+        d-title .status span {
+            line-height: 1;
+            display: inline-block;
+            padding: 6px 0;
+            border-bottom: 1px solid #80cbc4;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        /*
+       * Copyright 2018 The Distill Template Authors
+       *
+       * Licensed under the Apache License, Version 2.0 (the "License");
+       * you may not use this file except in compliance with the License.
+       * You may obtain a copy of the License at
+       *
+       *      http://www.apache.org/licenses/LICENSE-2.0
+       *
+       * Unless required by applicable law or agreed to in writing, software
+       * distributed under the License is distributed on an "AS IS" BASIS,
+       * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       * See the License for the specific language governing permissions and
+       * limitations under the License.
+       */
+
+        d-byline {
+            contain: style;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.8rem;
+            line-height: 1.8em;
+            padding: 1.5rem 0;
+            min-height: 1.8em;
+        }
+
+
+        d-byline .byline {
+            grid-template-columns: 1fr 1fr;
+            grid-column: text;
+        }
+
+        @media(min-width: 768px) {
+            d-byline .byline {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+
+        d-byline .authors-affiliations {
+            grid-column-end: span 2;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 1em;
+        }
+
+        @media(min-width: 768px) {
+            d-byline .authors-affiliations {
+                margin-bottom: 0;
+            }
+        }
+
+        d-byline h3 {
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.5);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        d-byline p {
+            margin: 0;
+        }
+
+        d-byline a,
+        d-article d-byline a {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        d-article d-byline a:hover {
+            text-decoration: underline;
+            border-bottom: none;
+        }
+
+        d-byline p.author {
+            font-weight: 500;
+        }
+
+        d-byline .affiliations {}
+
+        /*
+       * Copyright 2018 The Distill Template Authors
+       *
+       * Licensed under the Apache License, Version 2.0 (the "License");
+       * you may not use this file except in compliance with the License.
+       * You may obtain a copy of the License at
+       *
+       *      http://www.apache.org/licenses/LICENSE-2.0
+       *
+       * Unless required by applicable law or agreed to in writing, software
+       * distributed under the License is distributed on an "AS IS" BASIS,
+       * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       * See the License for the specific language governing permissions and
+       * limitations under the License.
+       */
+
+        d-article {
+            contain: layout style;
+            overflow-x: hidden;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 2rem;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        d-article>* {
+            grid-column: text;
+        }
+
+        @media(min-width: 768px) {
+            d-article {
+                font-size: 16px;
+            }
+        }
+
+        @media(min-width: 1024px) {
+            d-article {
+                font-size: 1.06rem;
+                line-height: 1.7em;
+            }
+        }
+
+
+        /* H2 */
+
+
+        d-article .marker {
+            text-decoration: none;
+            border: none;
+            counter-reset: section;
+            grid-column: kicker;
+            line-height: 1.7em;
+        }
+
+        d-article .marker:hover {
+            border: none;
+        }
+
+        d-article .marker span {
+            padding: 0 3px 4px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            position: relative;
+            top: 4px;
+        }
+
+        d-article .marker:hover span {
+            color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+        }
+
+        d-article h2 {
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 1.25em;
+            margin: 2rem 0 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        @media(min-width: 1024px) {
+            d-article h2 {
+                font-size: 36px;
+            }
+        }
+
+        /* H3 */
+
+        d-article h3 {
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.4em;
+            margin-bottom: 1em;
+            margin-top: 2em;
+        }
+
+        @media(min-width: 1024px) {
+            d-article h3 {
+                font-size: 20px;
+            }
+        }
+
+        /* H4 */
+
+        d-article h4 {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            line-height: 1.4em;
+        }
+
+        d-article a {
+            color: inherit;
+        }
+
+        d-article p,
+        d-article ul,
+        d-article ol,
+        d-article blockquote {
+            margin-top: 0;
+            margin-bottom: 1em;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        d-article blockquote {
+            border-left: 2px solid rgba(0, 0, 0, 0.2);
+            padding-left: 2em;
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        d-article a {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            text-decoration: none;
+        }
+
+        d-article a:hover {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        d-article .link {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        d-article ul,
+        d-article ol {
+            padding-left: 24px;
+        }
+
+        d-article li {
+            margin-bottom: 1em;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        d-article li:last-child {
+            margin-bottom: 0;
+        }
+
+        d-article pre {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        d-article hr {
+            grid-column: screen;
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
+        d-article section {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
+        d-article span.equation-mimic {
+            font-family: georgia;
+            font-size: 115%;
+            font-style: italic;
+        }
+
+        d-article>d-code,
+        d-article section>d-code {
+            display: block;
+        }
+
+        d-article>d-math[block],
+        d-article section>d-math[block] {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+
+            d-article>d-code,
+            d-article section>d-code,
+            d-article>d-math[block],
+            d-article section>d-math[block] {
+                overflow-x: scroll;
+                -ms-overflow-style: none;
+                overflow: -moz-scrollbars-none;
+            }
+
+            d-article>d-code::-webkit-scrollbar,
+            d-article section>d-code::-webkit-scrollbar,
+            d-article>d-math[block]::-webkit-scrollbar,
+            d-article section>d-math[block]::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        d-article .citation {
+            color: #668;
+            cursor: pointer;
+        }
+
+        d-include {
+            width: auto;
+            display: block;
+        }
+
+        d-figure {
+            contain: layout style;
+        }
+
+        /* KaTeX */
+
+        .katex,
+        .katex-prerendered {
+            contain: style;
+            display: inline-block;
+        }
+
+        /* Tables */
+
+        d-article table {
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        d-article table th {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        d-article table td {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        d-article table tr:last-of-type td {
+            border-bottom: none;
+        }
+
+        d-article table th,
+        d-article table td {
+            font-size: 15px;
+            padding: 2px 8px;
+        }
+
+        d-article table tbody :first-child td {
+            padding-top: 2px;
+        }
+
+        /*
+       * Copyright 2018 The Distill Template Authors
+       *
+       * Licensed under the Apache License, Version 2.0 (the "License");
+       * you may not use this file except in compliance with the License.
+       * You may obtain a copy of the License at
+       *
+       *      http://www.apache.org/licenses/LICENSE-2.0
+       *
+       * Unless required by applicable law or agreed to in writing, software
+       * distributed under the License is distributed on an "AS IS" BASIS,
+       * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       * See the License for the specific language governing permissions and
+       * limitations under the License.
+       */
+
+        span.katex-display {
+            text-align: left;
+            padding: 8px 0 8px 0;
+            margin: 0.5em 0 0.5em 1em;
+        }
+
+        span.katex {
+            -webkit-font-smoothing: antialiased;
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 1.18em;
+        }
+
+        /*
+       * Copyright 2018 The Distill Template Authors
+       *
+       * Licensed under the Apache License, Version 2.0 (the "License");
+       * you may not use this file except in compliance with the License.
+       * You may obtain a copy of the License at
+       *
+       *      http://www.apache.org/licenses/LICENSE-2.0
+       *
+       * Unless required by applicable law or agreed to in writing, software
+       * distributed under the License is distributed on an "AS IS" BASIS,
+       * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       * See the License for the specific language governing permissions and
+       * limitations under the License.
+       */
+
+        @media print {
+
+            @page {
+                size: 8in 11in;
+
+                @bottom-right {
+                    content: counter(page) " of "counter(pages);
+                }
+            }
+
+            html {
+                /* no general margins -- CSS Grid takes care of those */
+            }
+
+            p,
+            code {
+                page-break-inside: avoid;
+            }
+
+            h2,
+            h3 {
+                page-break-after: avoid;
+            }
+
+            d-header {
+                visibility: hidden;
+            }
+
+            d-footer {
+                display: none !important;
+            }
+
+        }
+    </style>
+    <style type="text/css">
+        #BJ {
+            /*图片居中 */
+            /* //added by shawn */
+            text-align: center;
+        }
+
+        #img {
+            /*图片宽度，高度 */
+            width: 640px;
+            height: 345px;
+        }
+
+        #demo {
+            /*图片宽度，高度 */
+            width: 640px;
+            height: 345px;
+        }
+    </style>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        });
+   
+   
+  </script>
+</head>
+
+
+<script type="text/javascript">
+    var index = 0
+    var index1 = 0;
+    var index2 = 0;
+    var index3 = 0;
+    var index4 = 0;
+    var index5 = 0;
+    var demos = ["hypergraph1.svg", "hypergraph2.svg", "hypergraph3.svg", "hypergraph4.svg"]
+    var hyps = ["hypergraph1.svg", "hypergraph2.svg", "hypergraph3.svg", "hypergraph4.svg"]; /*图片的地址 */
+    var imps = ["implicit1.svg", "implicit2.svg", "implicit3.svg", "implicit4.svg", "implicit5.svg", "implicit6.svg"]; /*图片的地址 */
+    var exps = ["explicit1.svg", "explicit2.svg", "explicit3.svg", "explicit4.svg", "explicit5.svg", "explicit6.svg"]; /*图片的地址 */
+    var clus = ["clustering1.svg", "clustering2.svg", "clustering3.svg", "clustering4.svg"]; /*图片的地址 */
+    var t_DHLs = ["t-DHL1.png", "t-DHL2.png", "t-DHL3.png", "t-DHL4.png", "t-DHL5.png", "t-DHL6.png"]; /*图片的地址 */
+    // 图片自动切换：
+    function auto() {
+        document.getElementById("demo").src = demos[index];
+        index++;
+        if (index > demos.length - 1) {
+            index = 0;
+        }
+    }
+    setInterval("auto()", 3000);  //每3秒重新运行函数auto()
+
+
+    //图片点击切换：
+    window.onload = function () {
+
+        var obj1 = document.getElementById("img_hypergraph");
+        var obj2 = document.getElementById("img_implicit");
+        var obj3 = document.getElementById("img_explicit");
+        var obj4 = document.getElementById("img_clustering");
+        var obj5 = document.getElementById("img_tdhl");
+
+        obj1.onclick = function () {
+            index1++;
+            if (index1 > hyps.length - 1)
+                index1 = 0;
+            obj1.src = hyps[index1];
+        }
+
+        obj2.onclick = function () {
+            index2++;
+            if (index2 > imps.length - 1)
+                index2 = 0;
+            obj2.src = imps[index2];
+        }
+
+        obj3.onclick = function () {
+            index3++;
+            if (index3 > exps.length - 1)
+                index3 = 0;
+            obj3.src = exps[index3];
+        }
+
+        obj4.onclick = function () {
+            index4++;
+            if (index4 > clus.length - 1)
+                index4 = 0;
+            obj4.src = clus[index4];
+        }
+
+        obj5.onclick = function () {
+            index5++;
+            if (index5 > t_DHLs.length - 1)
+                index5 = 0;
+            obj5.src = t_DHLs[index5];
+        }
+    }
+</script>
+
+<body distill-prerendered="">
+    <div
+        style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;">
+        <div id="MathJax_Hidden"></div>
+    </div>
+    <div id="MathJax_Message" style="display: none;"></div>
+    <distill-header distill-prerendered="">
+        <style>
+            distill-header {
+                position: relative;
+                height: 60px;
+                background-color: hsl(200, 60%, 15%);
+                width: 100%;
+                box-sizing: border-box;
+                z-index: 2;
+                color: rgba(0, 0, 0, 0.8);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+            }
+
+            distill-header .content {
+                height: 70px;
+                grid-column: page;
+            }
+
+            distill-header a {
+                font-size: 16px;
+                height: 60px;
+                line-height: 60px;
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.8);
+                padding: 22px 0;
+            }
+
+            distill-header a:hover {
+                color: rgba(255, 255, 255, 1);
+            }
+
+            distill-header svg {
+                width: 24px;
+                position: relative;
+                top: 4px;
+                margin-right: 2px;
+            }
+
+            @media(min-width: 1080px) {
+                distill-header {
+                    height: 70px;
+                }
+
+                distill-header a {
+                    height: 70px;
+                    line-height: 70px;
+                    padding: 28px 0;
+                }
+
+                distill-header .logo {}
+            }
+
+            distill-header svg path {
+                fill: none;
+                stroke: rgba(255, 255, 255, 0.8);
+                stroke-width: 3px;
+            }
+
+            distill-header .logo {
+                font-size: 17px;
+                font-weight: 200;
+            }
+
+            distill-header .nav {
+                float: right;
+                font-weight: 300;
+            }
+
+            distill-header .nav a {
+                font-size: 12px;
+                margin-left: 24px;
+                text-transform: uppercase;
+            }
+            }
+        </style>
+        <div class="content">
+            <a href="https://distill.pub/" class="logo">
+                <svg viewBox="-607 419 64 64">
+                    <path
+                        d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z">
+                    </path>
+                </svg>
+
+                Distill
+            </a>
+            <nav class="nav">
+                <a href="https://distill.pub/about/">About</a>
+                <a href="https://distill.pub/prize/">Prize</a>
+                <a href="https://distill.pub/journal/">Submit</a>
+            </nav>
+        </div>
+    </distill-header>
+    <title>A Gentle Introduction to Hypergraph Learning</title>
+    <!-- <link rel="stylesheet" href="./tst/style.e308ff8e.css">
+    <link rel="stylesheet" href="./tst/layerwise_trace.d38144f3.css">
+    <link rel="stylesheet" href="./tst/shuffle.90a7da43.css">
+    <link rel="stylesheet" href="./tst/text-as-graph.146f5ac8.css">
+    <link rel="stylesheet" href="./tst/pca-layers.889c7e67.css">
+    <link rel="stylesheet" href="./tst/gnn-playground.7fda89e6.css">
+    <link rel="stylesheet" href="./tst/mols-as-graph.f8d43714.css">
+    <link rel="stylesheet" href="./tst/shuffle-sm.e4a48acb.css">
+    <link rel="stylesheet" href="./tst/table.0b6daf45.css">
+    <link rel="stylesheet" href="./tst/graph-description.c0d85959.css">
+    <link rel="stylesheet" href="./tst/graph-description-embeddings.95e72025.css"> -->
+
+    <d-title>
+        <h1> A Gentle Introduction to Hypergraph Learning</h1>
+        <p> A hypergraph is a generalization of a graph in which an edge can join any number of
+            vertices. In contrast, in an ordinary graph, an edge connects exactly two vertices. It is
+            often desirable to study hypergraphs where all hyperedges have the same cardinality;
+            a $k$-uniform hypergraph is a hypergraph such that all its hyperedges have size $k$. 
+        </p>
+
+        <p>
+             This page is an introduction to "Hypergraph Learning". A hypergraph composing of a
+            set of vertices and hyperedges is a generalization of a graph. Different from a simple
+            graph where two vertices are joined together by one edge, each hyperedge can
+            connect any number of vertices in a hypergraph. Hypergraph learning is a technique
+            conducting learning on a hypergraph structure.
+        </p>
+        <!-- <h2> Exp2 </h2>
+        <p> Correspond the matrix-based model with the tensor-based model. </p>
+        <img src="1.png" id="img" />
+        <h2> Exp3 </h2>
+        <p> Cluster with the hypergraph.</p>
+        <img src="clutering0.svg" id="img" />
+        <h2> Related work </h2>
+        <h3> ResMultiHGNN </h3>
+        <img src="figure1.svg" id="img" />
+        <h3> Bi-MHG </h3>
+        <img src="figure2.svg" id="img" />
+        <h3> MHGNN </h3>
+        <img src="figure3.svg" id="img" /> -->
+    </d-title>
+    <figure class="teaser">
+    <div id="BJ">
+        <img src="hypergraph1.svg" id="demo" />
+    </div>
+</figure>
+
+    <d-byline>
+        <div class="byline grid">
+            <div class="authors-affiliations grid">
+                <h3>Authors</h3>
+                <h3>Affiliations</h3>
+
+                <p class="author">
+
+                    <span class="name">Fan Jiajun</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Luo Chengxiao</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Li Tianxiang</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Liu Zixuan</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Wu Tong</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Xie Mingzhi</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+            </div>
+            <div>
+                <h3>Published</h3>
+
+                <p>April. 12, 2022</p>
+            </div>
+
+        </div>
+    </d-byline>
+    <d-article>
+
+        <p><em>We first introduce the basic concepts of hypergraphs, then introduce common methods
+                of hypergraph generation and four mature hypergraph learning algorithms, and finally
+                show our experiments.
+            </em></p>
+        <h2> Hypergraph </h2>
+        <p>A hypergraph is a generalization of a graph in which an edge can join any number of
+            vertices. In contrast, in an ordinary graph, an edge connects exactly two vertices. It is
+            often desirable to study hypergraphs where all hyperedges have the same cardinality;
+            a $k$-uniform hypergraph is a hypergraph such that all
+            its hyperedges have size $k$.
+        </p>
+        <figure>
+            <div class="graph">
+                <img src="hypergraph1.svg" id="img_hypergraph" />
+            </div>
+            <figcaption>
+                Click on the figure to see the relationship between graph and hypergraph.
+            </figcaption>
+        </figure>
+        <p>Compared with graphs, hypergraphs have stronger expressive ability and unique
+            advantages for modeling more complex data. Hypergraphs are useful in modelling
+            such things as satisfiability problems, databases, machine learning, and Steiner tree
+            problems. They have been extensively used in machine learning tasks as the data
+            model and classifier regularization. The applications include recommender
+            system, image etrieval, and bioinformatics. Representative hypergraph learning
+            techniques include hypergraph spectral clustering that extends the spectral graph
+            theory with hypergraph Laplacian, and hypergraph semi-supervised learning that
+            introduces extra hypergraph structural cost to restrict the learning results. For large
+            scale hypergraphs, a distributed framework built using Apache Spark is also available.
+        </p>
+        <p>Hypergraph has the following basic concepts:</p>
+        <ul>
+            <li>vertex. Usually denoted by $V$, which represents the vertex set of the hypergraph.</li>
+            <li>hyperedge. Usually denoted by $E$, representing the hyperedge set of the
+                hypergraph.</li>
+            <li>weight. Usually denoted by $W$, which represents the weight of the hyperedge.</li>
+            <li>degree. The degree of a vertex represents how many hyperedges the vertex
+                belongs to, and the degree of a hyperedge represents how many vertices the
+                hyperedge is connected to.</li>
+            <li>incidence matrix. $H_{i,j} = 1$ represents that vertex $i$ is in hyperedge
+                $j$, $H_{i,j} = 0$ represents that vertex $i$ is not in hyperedge $j$.
+            </li>
+        </ul>
+        <p>The chart of the degrees and incidence matrix of the above figure is given below.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>vertex</th>
+                    <th>$v_1$</th>
+                    <th>$v_2$</th>
+                    <th>$v_3$</th>
+                    <th>$v_4$</th>
+                    <th>$v_5$</th>
+                    <th>hyperedge</th>
+                    <th>$e_1$</th>
+                    <th>$e_2$</th>
+                    <th>$e_3$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>degree</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>degree</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>$e_1$</th>
+                    <th>$e_2$</th>
+                    <th>$e_3$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$v_1$</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>$v_2$</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>$v_3$</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>$v_4$</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>$v_5$</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>HYPERGRAPH GENERATION</h2>
+        <p>To formulate the data correlation with a hypergraph, the fifirst step is to construct a
+            hypergraph from the data. The quality of the generated hypergraph structure directly
+            affects the effectiveness of the data correlation modeling. The problem of how to
+            construct an effective hypergraph is not trivial and thereby has been extensively
+            investigated. Hypergraph generation can generally be divided into two categories:
+            implicit and explicit.</p>
+        <h3>Implicit</h3>
+        <p>The implicit hyperedges are defifined as the hyperedges that are not able to be directly
+            obtained from raw data and need to be reconstructed by establishing representations
+            and measurements. Implicit methods can be further divided into distance-based and
+            representation-based hypergraph generation method. These methods can be applied
+            to the tasks where we can create the representation of each subject and metrics to
+            describe the similarity between samples.</p>
+        <p>Representation-based hypergraph generation methods formulate the relations among
+            vertices through feature reconstruction.</p>
+        <p>Distance-based hypergraph generation approaches exploit the relations among
+            vertices using the distance in the feature space. The main objective is to fifind
+            neighboring vertices in the feature space and construct a hyperedge to connect them.
+            Generally, there are two ways to construct this hyperedge: nearest-neighbor searching
+            and clustering. In nearest-neighbor based methods, hyperedge construction needs to
+            fifind the nearest neighbors for each vertex. Different from nearest neighbor based
+            methods, the clustering-based methods aim to directly group all vertices into clusters
+            by a clustering algorithm such as k-means and connect all vertices in the same cluster
+            by a hyperedge (note that different scales of clustering results can be used to generate
+            multiple hyperedges).</p>
+        <p>For example, if the feature space is a two-dimensional space and the distance is
+            Euclidean distance, then several vertices closest to a center point form a hyperedge.</p>
+        <figure>
+            <div class="graph">
+                <img src="implicit1.svg" id="img_implicit" />
+            </div>
+            <figcaption>
+                Click on the figure to see the construction of implicit hyperedges.
+            </figcaption>
+        </figure>
+        <h3>Explicit</h3>
+        <p>Explicit hyperedges can be established straightforwardly because the input data may
+            inherently contain some structural information. Explicit methods can be further divided
+            into attribute-based and network-based hypergraph generation method.</p>
+        <p>Network data are available in many applications, such as social networks, reaction
+            networks, cellular networks and brain networks. For these data, the network data can
+            be used to generate subject correlations.</p>
+        <p>Attribute-based hypergraph generation methods are those methods that employ the
+            attribute information to construct a hyperedge. In this example, the vertices sharing the
+            same attributes are linked by a hyperedge. Hyperedge in an attribute-based
+            hypergraph is regarded as a clique, and then the mean of the heat kernel weights of
+            pairwise edges in this clique can be used as the hyperedge weight.</p>
+        <p>For example, if the basic information of several classmates is given, and each
+            classmate acts as a vertex, then classmates with the same information can form a
+            hyperedge.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>student</th>
+                    <th>Chinese</th>
+                    <th>Math</th>
+                    <th>English</th>
+                    <th>Physics</th>
+                    <th>Chemistry</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td></td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <figure>
+            <div>
+                <img src="explicit1.svg" id="img_explicit" />
+            </div>
+            <figcaption>
+                Click on the figure to see the construction of explicit hyperedges.
+            </figcaption>
+        </figure>
+        <h2>EXAMPLES OF HYPERGRAPH LEARNING</h2>
+        <p>After a hypergraph is constructed, learning tasks, such as label prediction of unlabeled
+            vertices, dynamic structure update, and multi-modal learning on this hypergraph, can
+            be performed. Next, we briefly introduce four more mature hypergraph learning
+            algorithms.</p>
+        <h3>Cluster with Hypergraph Learning</h3>
+        <figure>
+            <div>
+                <img src="clustering1.svg" id="img_clustering" />
+            </div>
+            <figcaption>
+                Click on the figure to see the process of clustering.
+            </figcaption>
+        </figure>
+        <p>To apply hypergraph learning to a specific clustering task, there are three steps to do (Take face
+            recognition task as an example):</p>
+        <ul>
+            <li>Modeling the problem with the hypergraph structure.
+                A hypergraph can be built on the face image dataset where each face photo is associated with a vertex in
+                the hypergraph.</li>
+            <li>Constructing the hypergraph based on the features, attributes, or prior correlations of the objects.
+                After extracting the features of all face images, distance-based or representation-based hyperedges can
+                be generated and a hypergraph can be constructed accordingly.</li>
+            <li>Conducting learning on this hypergraph with an appropriate hypergraph learning method.
+                The eigenvectors associated with the $k$ smallest eigenvalues of the Laplacian matrix can be calculated to
+                obtain a $k$-way partition. And a clustering algorithm like k-means can be run on these vectors to divide
+                them into $k$ clusters.</li>
+        </ul>
+        <p>The interaction above shows how to deal with a clustering problem based on hypergraph
+            learning, which divides 1000 samples into 4 clusters.</p>
+        <h3>t-DHL</h3>
+        <p>t-DHL leverage a tensor representation to characterize the dynamic hypergraph
+            structure more flexibly. Unlike the incidence matrix, not only weights but the number
+            and order of hyperedges can also be changed when optimizing the tensor
+            representation. It is due to that the tensor representation can describe the hyperedges
+            of all orders, which is a complete representation of hypergraph structure. The tensor-based dynamic
+            hypergraph learning is formulated as a biconvex model to ensure that
+            the model can converge to the optimal solution effificiently. T-DHL has the potential
+            ofapplying to large-scale data due to its high effectiveness and low computational cost.</p>
+        <figure>
+            <div>
+                <img src="t-DHL1.png" id="img_tdhl" />
+            </div>
+            <figcaption>
+                Click on the figure to see the relationship between matrix-based model and tensor-based model.
+            </figcaption>
+        </figure>
+        <h3>Bi-MHG(Cross-Modality Microblog Sentiment
+            Prediction via Bi-Layer Multimodal
+            Hypergraph Learning)</h3>
+        <p>Microblog sentiment prediction is one of the common applications of hypergraph with
+            wide application prospects. With the increasing proportion of multimodal tweets
+            consisting of images, texts, and emoticons, new challenges have been raised to the
+            existing sentiment prediction schemes. More crucially, it remains an open problem to
+            model the dependency among multiple modalities, where one or more modalities may
+            be missing. Therefore, a novel Bi-layer Multimodal Hypergraph learning (Bi-MHG) is
+            put forward toward robust sentiment prediction of multimodal tweets to tackle the
+            above challenges. In particular, Bi-MHG has a two-layer structure: The first layer, that
+            is, a tweet-level hypergraph, learns the tweet-feature correlation and the tweet
+            relevance to predict the sentiments of unlabeled tweets. The second layer, that is, a
+            featurelevel hypergraph learns the relevance among different feature modalities
+            (including the midlevel visual features in Sentibank) by leveraging prior multimodal
+            sentiment dictionaries. These two layers are connected by sharing the relevance of
+            multimodal features in a unified bilayer learning scheme. In such a way, Bi-MHG
+            explicitly models the modality relevance rather than implicitly weighting multimodal
+            features adopted in the existing Multimodal Hypergraph learning. Finally, a nested
+            alternating optimization is further proposed for Bi-MHG parameter learning.</p>
+        <figure>
+            <div>
+                <img src="Bi-MHG.svg" id="img_bimhg" />
+            </div>
+            <figcaption>
+                The framework of Bi-MHG.
+            </figcaption>
+        </figure>
+        <h3>HGNN(Multi-Scale Representation Learning
+            on Hypergraph for 3D Shape Retrieval and
+            Recognition)</h3>
+        <p>MHGNN is a multi-scale representation learning method on hypergraph for 3D shape
+            retrieval and recognition. Effective 3D shape retrieval and recognition are challenging
+            but important tasks in computer vision research field, which have attracted much
+            attention in recent decades. Although recent progress has shown significant
+            improvement of deep learning methods on 3D shape retrieval and recognition
+            performance, it is still under investigated of how to jointly learn an optimal
+            representation of 3D shapes considering their relationships. In this method, the
+            correlation among 3D shapes is formulated in a hypergraph and a hypergraph
+            convolution process is conducted to learn the representations. Here, multiple
+            representations can be obtained through different convolution layers, leading to multiscale representations
+            of 3D shapes. A fusion module is then introduced to combine
+            these representations for 3D shape retrieval and recognition. MHGNN can investigat
+            the high-order correlation among 3D shapes, and the joint multi-scale representation
+            can be more robust for comparison.</p>
+        <figure>
+            <div>
+                <img src="MHGNN.svg" id="img_mhgnn" />
+            </div>
+            <figcaption>
+                The framework of HGNN.
+            </figcaption>
+        </figure>
+        <h3>ResMultiHGNN(RESIDUAL ENHANCED
+            MULTI-HYPERGRAPH NEURAL NETWORK)</h3>
+        <p>HyperGraph Neural Network (HGNN) is currently the de-facto method for hypergraph
+            representation learning. However, HGNN aims at single hypergraph learning and uses
+            a pre-concatenation approach when confronting multi-modal datasets, which leads to
+            sub-optimal exploitation of the inter-correlations of multi-modal hypergraphs. HGNN
+            also suffers the over-smoothing issue, that is, its performance drops significantly when
+            layers are stacked up. To resolve these issues, Residual enhanced Multi-Hypergraph
+            Neural Network is put forward, which can not only fuse multi-modal information from
+            each hypergraph effectively, but also circumvent the over-smoothing issue associated
+            with HGNN.</p>
+        <figure>
+            <div>
+                <img src="ResMultiHGNN.svg" id="img_res" />
+            </div>
+            <figcaption>
+                The framework of ResMultiHGNN.
+            </figcaption>
+        </figure>
+    </d-article>
+
+</body>
+
+</html>
