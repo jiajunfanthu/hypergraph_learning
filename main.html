@@ -1063,13 +1063,10 @@
             a $k$-uniform hypergraph is a hypergraph where all its hyperedges have size $k$. <b>Hypergraph learning</b> is a technique
             conducting learning on a hypergraph structure.
             Here, we provide an general introduction to <b>Hypergraph Learning</b>.
-
-<!-- 
-                 -->
         </p>
 
     </d-title>
-    <!-- <p style="color:#FFF;font-weight:bold;">内联样式</p> -->
+
     <figure class="teaser">
     <div id="BJ">
         <img src="figures/hypergraph1.svg" id="demo" />
@@ -1086,8 +1083,8 @@
                 <h3>Affiliations</h3>
 
                 <p class="author">
-
-                    <span class="name">Fan Jiajun</span>
+                    <span class="name">
+                <a href="https://www.jiajunfan.com">Jiajun Fan</a> </span>
                 </p>
                 <p class="affiliation">
                     <span class="affiliation">Tsinghua University</span>
@@ -1095,7 +1092,7 @@
 
                 <p class="author">
 
-                    <span class="name">Luo Chengxiao</span>
+                    <span class="name">Chengxiao Luo</span>
                 </p>
                 <p class="affiliation">
                     <span class="affiliation">Tsinghua University</span>
@@ -1103,7 +1100,7 @@
 
                 <p class="author">
 
-                    <span class="name">Li Tianxiang</span>
+                    <span class="name">Tianxiang Li</span>
                 </p>
                 <p class="affiliation">
                     <span class="affiliation">Tsinghua University</span>
@@ -1111,7 +1108,7 @@
 
                 <p class="author">
 
-                    <span class="name">Liu Zixuan</span>
+                    <span class="name">Zixuan Liu</span>
                 </p>
                 <p class="affiliation">
                     <span class="affiliation">Tsinghua University</span>
@@ -1119,7 +1116,7 @@
 
                 <p class="author">
 
-                    <span class="name">Wu Tong</span>
+                    <span class="name">Tong Wu</span>
                 </p>
                 <p class="affiliation">
                     <span class="affiliation">Tsinghua University</span>
@@ -1127,7 +1124,7 @@
 
                 <p class="author">
 
-                    <span class="name">Xie Mingzhi</span>
+                    <span class="name">Mingzhi Xie</span>
                 </p>
                 <p class="affiliation">
                     <span class="affiliation">Tsinghua University</span>
@@ -1144,35 +1141,25 @@
     </d-byline>
     <d-article>
 
-        <p><em>We first introduce the basic concepts of hypergraphs, then introduce common methods
-                of hypergraph generation and four mature hypergraph learning algorithms, and finally
-                show our experiments.
-            </em></p>
+        <p>We will introduce the <b>basic concepts</b> of hypergraphs in the first place, then we will discuss several classic methods of
+              <b>hypergraph generation</b>, and finally we will demonstrate four representative hypergraph learning <b>examples</b> from the shallower to the deeper.</p>
+
         <h2> Hypergraph </h2>
         <p>A hypergraph is a generalization of a graph in which an edge can join any number of
             vertices. In contrast, in an ordinary graph, an edge connects exactly two vertices. It is
-            often desirable to study hypergraphs where all hyperedges have the same cardinality;
+            often desirable to study hypergraphs where all hyperedges have the <b>same cardinality</b>. For instance,
             a $k$-uniform hypergraph is a hypergraph such that all
-            its hyperedges have size $k$.
+            its hyperedges have <b>the same</b> size $k$. Noting that the size $k$ of a hyperedges means how many vertices are conneected by the hyperedge. Let's take the following example to understand it:
         </p>
         <figure>
             <div class="graph">
                 <img src="figures/hypergraph1.svg" id="img_hypergraph" />
             </div>
             <figcaption>
-                Click on the figure to see the relationship between graph and hypergraph.
+                <b>Click on</b> the figure to see the relationship between graph and hypergraph.
             </figcaption>
         </figure>
-        <p>Compared with graphs, hypergraphs have stronger expressive ability and unique
-            advantages for modeling more complex data. Hypergraphs are useful in modelling
-            such things as satisfiability problems, databases, machine learning, and Steiner tree
-            problems. They have been extensively used in machine learning tasks as the data
-            model and classifier regularization. The applications include recommender
-            system, image etrieval, and bioinformatics. Representative hypergraph learning
-            techniques include hypergraph spectral clustering that extends the spectral graph
-            theory with hypergraph Laplacian, and hypergraph semi-supervised learning that
-            introduces extra hypergraph structural cost to restrict the learning results. For large
-            scale hypergraphs, a distributed framework built using Apache Spark is also available.
+        <p>Compared with graphs, hypergraphs have a stronger expressive ability and unique advantages for modeling more complex data. Hypergraphs are useful in modeling such things as satisfiability problems, databases, machine learning, and Steiner tree problems. They have been extensively used in machine learning tasks as the data model and classifier regularization. The applications include recommender systems, image retrieval, and bioinformatics. Representative hypergraph learning techniques include hypergraph spectral clustering that extends the spectral graph theory with hypergraph Laplacian and hypergraph semi-supervised learning that introduces extra hypergraph structural cost to restrict the learning results. For large-scale hypergraphs, a distributed framework built using Apache Spark is also available.
         </p>
         <p>Hypergraph has the following basic concepts:</p>
         <ul>
@@ -1267,7 +1254,7 @@
             construct an effective hypergraph is not trivial and thereby has been extensively
             investigated. Hypergraph generation can generally be divided into two categories:
             implicit and explicit.</p>
-        <h3>Implicit</h3>
+        <h3>Implicit Methods</h3>
         <p>The implicit hyperedges are defifined as the hyperedges that are not able to be directly
             obtained from raw data and need to be reconstructed by establishing representations
             and measurements. Implicit methods can be further divided into distance-based and
@@ -1296,7 +1283,7 @@
                 Click on the figure to see the construction of implicit hyperedges.
             </figcaption>
         </figure>
-        <h3>Explicit</h3>
+        <h3>Explicit Methods</h3>
         <p>Explicit hyperedges can be established straightforwardly because the input data may
             inherently contain some structural information. Explicit methods can be further divided
             into attribute-based and network-based hypergraph generation method.</p>
@@ -1381,7 +1368,7 @@
             be performed. Next, we briefly introduce four more mature hypergraph learning
             algorithms.</p>
 
-        <h3>Clustering</h3>
+        <h3>Clustering With HyperGraph Learning</h3>
 
         <figure>
             <div>
@@ -1408,7 +1395,7 @@
         <p>The interaction above shows how to deal with a clustering problem based on hypergraph
             learning, which divides 1000 samples into 4 clusters.</p>
 
-        <h3> Classification </h3>
+        <h3> Classification With HyperGraph Learning</h3>
 
         <p>
             MNIST is a picture dataset of handwritten digits.  Here we'll use the MNIST dataset which consists of greyscale handwritten digits. Each image is 28x28 pixels, you can see a sample below.
@@ -1463,7 +1450,7 @@
 
 
 
-        <h3>t-DHL</h3>
+        <h3>t-DHL<a href="https://www.computer.org/csdl/journal/tp/5555/01/09264674/1oSTGZQHJgA">(Hypergraph Learning: Methods and Practices)</a></h3>
         <p>t-DHL leverage a tensor representation to characterize the dynamic hypergraph
             structure more flexibly. Unlike the incidence matrix, not only weights but the number
             and order of hyperedges can also be changed when optimizing the tensor
@@ -1480,9 +1467,10 @@
                 Click on the figure to see the relationship between matrix-based model and tensor-based model.
             </figcaption>
         </figure>
-        <h3>Bi-MHG(Cross-Modality Microblog Sentiment
+        <h3>Bi-MHG
+<a href="https://ieeexplore.ieee.org/document/8450030">(Cross-Modality Microblog Sentiment
             Prediction via Bi-Layer Multimodal
-            Hypergraph Learning)</h3>
+            Hypergraph Learning)</a></h3>
         <p>Microblog sentiment prediction is one of the common applications of hypergraph with
             wide application prospects. With the increasing proportion of multimodal tweets
             consisting of images, texts, and emoticons, new challenges have been raised to the
@@ -1508,9 +1496,10 @@
                 The framework of Bi-MHG.
             </figcaption>
         </figure>
-        <h3>HGNN(Multi-Scale Representation Learning
+        <h3>HGNN
+            <a href="https://ieeexplore.ieee.org/abstract/document/9442912">(Multi-Scale Representation Learning
             on Hypergraph for 3D Shape Retrieval and
-            Recognition)</h3>
+            Recognition)</a></h3>
         <p>MHGNN is a multi-scale representation learning method on hypergraph for 3D shape
             retrieval and recognition. Effective 3D shape retrieval and recognition are challenging
             but important tasks in computer vision research field, which have attracted much
@@ -1533,8 +1522,9 @@
                 The framework of HGNN.
             </figcaption>
         </figure>
-        <h3>ResMultiHGNN(RESIDUAL ENHANCED
-            MULTI-HYPERGRAPH NEURAL NETWORK)</h3>
+        <h3>ResMultiHGNN
+            <a href="https://arxiv.org/abs/2105.00490">(RESIDUAL ENHANCED
+            MULTI-HYPERGRAPH NEURAL NETWORK)</a></h3>
         <p>HyperGraph Neural Network (HGNN) is currently the de-facto method for hypergraph
             representation learning. However, HGNN aims at single hypergraph learning and uses
             a pre-concatenation approach when confronting multi-modal datasets, which leads to
