@@ -1387,7 +1387,7 @@ table tfoot tr td{
 
         <h4>An Example of Attribute-based Hypergraph Generation</h4>
 
-        <p>Let's take an example of Attribute-based Hypergraph Generation in the following to help understand hypergraph generation. We considered the examples where the basic information of several classmates is given, and each classmate acts as a vertex, then classmates with the same information can form a hyperedge.</p>
+        <p>Let's take an example of Attribute-based Hypergraph Generation in the following to help understand hypergraph generation. We considered the examples where the <b>basic information</b> of several <b>classmates</b> is given, and each classmate acts as a <b>vertex</b>, then classmates with the same information can form a <b>hyperedge</b>.</p>
         <table>
             <thead>
                 <tr>
@@ -1447,7 +1447,7 @@ table tfoot tr td{
                 <img src="figures/explicit1.svg" id="img_explicit" />
             </div>
             <figcaption>
-                Click on the figure to see the construction of explicit hyperedges.
+                A Straightforward Example of Attribute-based Hypergraph Generation. <br> Click on the figure to see the construction of explicit hyperedges.
             </figcaption>
         </figure>
 
@@ -1455,40 +1455,39 @@ table tfoot tr td{
 
         <p>After a hypergraph is <b>constructed</b>, learning tasks, such as <a href="https://ojs.aaai.org/index.php/AAAI/article/view/6170">label prediction</a> of unlabeled
             vertices, <a href="https://www.ijcai.org/proceedings/2018/0439.pdf">dynamic structure update</a>, and <a href="https://www.sciencedirect.com/science/article/abs/pii/S0925231215009388">multi-modal learning</a> on this hypergraph, can
-            be performed. In the following, we briefly introduce four representative hypergraph learning
+            be performed. In the following, we briefly introduce several representative hypergraph learning
             methods.</p>
 
-        <h3>Clustering With Hypergraph Learning</h3>
+        <h3>Clustering With Hypergraph Learning <a href="https://www.computer.org/csdl/journal/tp/5555/01/09264674/1oSTGZQHJgA">(Hypergraph Learning: Methods and Practices)</a></h3>
 
         <figure>
             <div>
                 <img src="figures/clustering1.svg" id="img_clustering" />
             </div>
             <figcaption>
-                Click on the figure to see the process of clustering.
+                Clustering With Hypergraph Learning. <b>Click on</b> the figure to see the process of clustering.
             </figcaption>
         </figure>
-        <p>To apply hypergraph learning to a specific clustering task, there are three steps to do (Take face
-            recognition task as an example):</p>
+        <p>To apply hypergraph learning to a specific clustering task, there are three steps to do (Take the face recognition task as an example):</p>
         <ul>
-            <li>Modeling the problem with the hypergraph structure.
+            <li><b>Modeling the problem with the hypergraph structure.</b>
                 A hypergraph can be built on the face image dataset where each face photo is associated with a vertex in
                 the hypergraph.</li>
-            <li>Constructing the hypergraph based on the features, attributes, or prior correlations of the objects.
+            <li><b>Constructing the hypergraph based on the features, attributes, or prior correlations of the objects.</b>
                 After extracting the features of all face images, distance-based or representation-based hyperedges can
                 be generated and a hypergraph can be constructed accordingly.</li>
-            <li>Conducting learning on this hypergraph with an appropriate hypergraph learning method.
+            <li><b>Conducting learning on this hypergraph with an appropriate hypergraph learning method.</b>
                 The eigenvectors associated with the $k$ smallest eigenvalues of the Laplacian matrix can be calculated to
                 obtain a $k$-way partition. And a clustering algorithm like k-means can be run on these vectors to divide
                 them into $k$ clusters.</li>
         </ul>
-        <p>The interaction above shows how to deal with a clustering problem based on hypergraph
-            learning, which divides 1000 samples into 4 clusters.</p>
 
-        <h3> Classification With Hypergraph Learning</h3>
+        <p>The figures above shows describe the process of how the hypergraph learning methods handle the clustering task.</p>
+
+        <h3> Classification With Hypergraph Learning <a href="https://www.computer.org/csdl/journal/tp/5555/01/09264674/1oSTGZQHJgA">(Hypergraph Learning: Methods and Practices)</a></h3>
 
         <p>
-            MNIST is a picture dataset of handwritten digits.  Here we'll use the MNIST dataset which consists of greyscale handwritten digits. Each image is 28x28 pixels, you can see a sample below.
+            MNIST is a <b>picture dataset</b> of handwritten digits for <b>Classification</b>.  Here we'll use the MNIST dataset which consists of greyscale handwritten digits. Each image is 28x28 pixels, you can see a sample below.
         </p>
 
         <figure>
@@ -1500,8 +1499,7 @@ table tfoot tr td{
             </figcaption>
         </figure>
 
-<p>
-    
+<p>    
     Our goal is to build a hypergraph that can take one of these images and predict the digit in the image. Let's get straight into it. Below is the full hypergraph we built, which contains all nodes in the test and training sets.
 </p>
 
@@ -1515,7 +1513,7 @@ table tfoot tr td{
         </figure>
 
 <p>
-    For better analysis, we extract the test set separately and show its corresponding hyperedge.
+    For better analysis, we extract the test set separately and show its <b>corresponding hyperedge</b>.
 </p>
         <figure>
             <div>
@@ -1527,7 +1525,7 @@ table tfoot tr td{
         </figure>
 
 <p>
-    Experiments show that the hypergraph model can well represent the correlation information between various pictures and extract similar (common) features. Below are several representative hyperedges we show and the nodes they contain.
+    Experiments show that the hypergraph model can well represent the <b>correlation information </b> between various pictures and extract <b>similar</b> (common) features. Below are several representative hyperedges and the nodes they contain.
 </p>
         <figure>
             <div>
@@ -1541,41 +1539,34 @@ table tfoot tr td{
 
 
         <h3>t-DHL<a href="https://www.computer.org/csdl/journal/tp/5555/01/09264674/1oSTGZQHJgA">(Hypergraph Learning: Methods and Practices)</a></h3>
-        <p>t-DHL leverage a tensor representation to characterize the dynamic hypergraph
-            structure more flexibly. Unlike the incidence matrix, not only weights but the number
-            and order of hyperedges can also be changed when optimizing the tensor
-            representation. It is due to that the tensor representation can describe the hyperedges
-            of all orders, which is a complete representation of hypergraph structure. The tensor-based dynamic
-            hypergraph learning is formulated as a biconvex model to ensure that
-            the model can converge to the optimal solution effificiently. T-DHL has the potential
-            ofapplying to large-scale data due to its high effectiveness and low computational cost.</p>
+        <p>t-DHL <b>leverage</b> a <b>tensor representation</b> to characterize the <b>dynamic hypergraph</b> structure more flexibly. Unlike the incidence matrix, not only weights but <b>the number and order</b> of hyperedges can also be changed when optimizing the tensor representation. It is that the tensor representation can describe the hyperedges of all orders, which is a complete representation of hypergraph structure. The tensor-based dynamic hypergraph learning is formulated as a <b>biconvex model</b> to ensure that the model can converge to the optimal solution <b>efficiently</b>. T-DHL has the potential of applying to large-scale data due to its high effectiveness and <b>low computational cost</b>.</p>
         <figure>
             <div>
                 <img src="figures/t-DHL1.png" id="img_tdhl" />
             </div>
             <figcaption>
-                Click on the figure to see the relationship between matrix-based model and tensor-based model.
+                An Example of t-DHL. <b>Click on</b> the figure to see the relationship between matrix-based model and tensor-based model.
             </figcaption>
         </figure>
         <h3>Bi-MHG
 <a href="https://ieeexplore.ieee.org/document/8450030">(Cross-Modality Microblog Sentiment
             Prediction via Bi-Layer Multimodal
             Hypergraph Learning)</a></h3>
-        <p>Microblog sentiment prediction is one of the common applications of hypergraph with
+        <p><b>Microblog sentiment prediction</b> is one of the common applications of hypergraph with
             wide application prospects. With the increasing proportion of multimodal tweets
-            consisting of images, texts, and emoticons, new challenges have been raised to the
+            consisting of <b>images</b>, <b>texts</b>, and <b>emoticons</b>, new challenges have been raised to the
             existing sentiment prediction schemes. More crucially, it remains an open problem to
-            model the dependency among multiple modalities, where one or more modalities may
-            be missing. Therefore, a novel Bi-layer Multimodal Hypergraph learning (Bi-MHG) is
+            model the <b>dependency</b> among multiple modalities, where one or more modalities may
+            be <b>missing</b>. Therefore, a novel <b>Bi-layer Multimodal Hypergraph learning</b> (Bi-MHG) is
             put forward toward robust sentiment prediction of multimodal tweets to tackle the
             above challenges. In particular, Bi-MHG has a two-layer structure: The first layer, that
-            is, a tweet-level hypergraph, learns the tweet-feature correlation and the tweet
-            relevance to predict the sentiments of unlabeled tweets. The second layer, that is, a
-            featurelevel hypergraph learns the relevance among different feature modalities
-            (including the midlevel visual features in Sentibank) by leveraging prior multimodal
-            sentiment dictionaries. These two layers are connected by sharing the relevance of
+            is, a tweet-level hypergraph, learns the <b>tweet-feature correlation</b> and the <b>tweet
+            relevance</b> to predict the sentiments of unlabeled tweets. The second layer, that is, a
+            featurelevel hypergraph learns the <b>relevance</b> among different feature modalities
+            (including the midlevel visual features in Sentibank) by leveraging <b>prior multimodal
+            sentiment dictionaries</b>. These two layers are connected by sharing the relevance of
             multimodal features in a unified bilayer learning scheme. In such a way, Bi-MHG
-            explicitly models the modality relevance rather than implicitly weighting multimodal
+            explicitly models the modality relevance <b>rather than</b> implicitly weighting multimodal
             features adopted in the existing Multimodal Hypergraph learning. Finally, a nested
             alternating optimization is further proposed for Bi-MHG parameter learning.</p>
         <figure>
@@ -1590,19 +1581,19 @@ table tfoot tr td{
             <a href="https://ieeexplore.ieee.org/abstract/document/9442912">(Multi-Scale Representation Learning
             on Hypergraph for 3D Shape Retrieval and
             Recognition)</a></h3>
-        <p>MHGNN is a multi-scale representation learning method on hypergraph for 3D shape
-            retrieval and recognition. Effective 3D shape retrieval and recognition are challenging
+        <p><b>MHGNN</b> is a <b>multi-scale</b> representation learning method on hypergraph for <b>3D shape
+            retrieval</b> and <b>recognition</b>. <b>Effective</b> 3D shape retrieval and recognition are challenging
             but important tasks in computer vision research field, which have attracted much
             attention in recent decades. Although recent progress has shown significant
             improvement of deep learning methods on 3D shape retrieval and recognition
-            performance, it is still under investigated of how to jointly learn an optimal
-            representation of 3D shapes considering their relationships. In this method, the
-            correlation among 3D shapes is formulated in a hypergraph and a hypergraph
-            convolution process is conducted to learn the representations. Here, multiple
-            representations can be obtained through different convolution layers, leading to multiscale representations
-            of 3D shapes. A fusion module is then introduced to combine
+            performance, it is still under investigated of <em>how to jointly learn an optimal
+            representation of 3D shapes considering their relationships</em>. In this method, the
+            <b>correlation</b> among 3D shapes is formulated in a hypergraph and a <b>hypergraph
+            convolution process</b> is conducted to learn the representations. Here, multiple
+            representations can be obtained through different convolution layers, leading to multi-scale representations
+            of 3D shapes. A <br>fusion module is then introduced to combine
             these representations for 3D shape retrieval and recognition. MHGNN can investigat
-            the high-order correlation among 3D shapes, and the joint multi-scale representation
+            the high-order correlation among 3D shapes, and the <b>joint multi-scale representation</b>
             can be more robust for comparison.</p>
         <figure>
             <div>
@@ -1615,14 +1606,14 @@ table tfoot tr td{
         <h3>ResMultiHGNN
             <a href="https://arxiv.org/abs/2105.00490">(RESIDUAL ENHANCED
             MULTI-HYPERGRAPH NEURAL NETWORK)</a></h3>
-        <p>Hypergraph Neural Network (HGNN) is currently the de-facto method for hypergraph
+        <p><b>Hypergraph Neural Network</b> (HGNN) is currently the <b>de-facto</b> method for hypergraph
             representation learning. However, HGNN aims at single hypergraph learning and uses
-            a pre-concatenation approach when confronting multi-modal datasets, which leads to
-            sub-optimal exploitation of the inter-correlations of multi-modal hypergraphs. HGNN
-            also suffers the over-smoothing issue, that is, its performance drops significantly when
-            layers are stacked up. To resolve these issues, Residual enhanced Multi-Hypergraph
-            Neural Network is put forward, which can not only fuse multi-modal information from
-            each hypergraph effectively, but also circumvent the over-smoothing issue associated
+            a <b>pre-concatenation approach</b> when confronting multi-modal datasets, which leads to
+            <em>sub-optimal exploitation of the inter-correlations of multi-modal hypergraphs</em>. HGNN
+            also suffers the <em>over-smoothing issue</em>, that is, its performance drops significantly when
+            layers are stacked up. To resolve these issues, <b>Residual enhanced Multi-Hypergraph
+            Neural Network</b> is put forward, which can not only fuse multi-modal information from
+            each hypergraph effectively, but also <b>circumvent </b>the over-smoothing issue associated
             with HGNN.</p>
         <figure>
             <div>
