@@ -1423,6 +1423,10 @@
 
         <h3> Classification </h3>
 
+        <p>
+            MNIST is a picture dataset of handwritten digits.  Here we'll use the MNIST dataset which consists of greyscale handwritten digits. Each image is 28x28 pixels, you can see a sample below.
+        </p>
+
         <figure>
             <div>
                 <img src="figures/mnist.png" id="img_mnist" />
@@ -1431,6 +1435,45 @@
                 MNIST Dataset and Number Classification
             </figcaption>
         </figure>
+
+<p>
+    
+    Our goal is to build a hypergraph that can take one of these images and predict the digit in the image. Let's get straight into it. Below is the full hypergraph we built, which contains all nodes in the test and training sets.
+</p>
+
+        <figure>
+            <div>
+                <img src="figures/class_all.svg" id="img_clustering" />
+            </div>
+            <figcaption>
+                The hypergraph of classification task
+            </figcaption>
+        </figure>
+
+<p>
+    For better analysis, we extract the test set separately and show its corresponding hyperedge.
+</p>
+        <figure>
+            <div>
+                <img src="figures/class_test.svg" id="img_clustering" />
+            </div>
+            <figcaption>
+                The hypergraph of classification task
+            </figcaption>
+        </figure>
+
+<p>
+    Experiments show that the hypergraph model can well represent the correlation information between various pictures and extract similar (common) features. Below are several representative hyperedges we show and the nodes they contain.
+</p>
+        <figure>
+            <div>
+                <img src="figures/class_hyperedge.svg" id="img_clustering" />
+            </div>
+            <figcaption>
+                The hypergraph of classification task
+            </figcaption>
+        </figure>
+
 
 
         <h3>t-DHL</h3>
