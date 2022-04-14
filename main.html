@@ -1044,7 +1044,7 @@
                         d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z">
                     </path>
                 </svg>
-                HyperGraph Learning
+                Hypergraph Learning
             </a>
             <nav class="nav">
                 <a href="https://www.jiajunfan.com">Contact</a> 
@@ -1072,7 +1072,7 @@
         <img src="figures/hypergraph1.svg" id="demo" />
     </div>
                 <figcaption>
-                    A Simple Demonstration of HyperGraph.
+                    A Simple Demonstration of Hypergraph.
             </figcaption>
 </figure>
 
@@ -1158,55 +1158,27 @@
                 <img src="figures/hypergraph1.svg" id="img_hypergraph" />
             </div>
             <figcaption>
-                <b>Click on</b> the figure to see the relationship between graph and hypergraph.
+                A Demo of Hypergraph. <b>Click on</b> the figure to see the relationship between graph and hypergraph.
             </figcaption>
         </figure>
 
         <h3>Basic Components of A Hypergraph</h3>
         <ul>
-            <li>vertex. Usually denoted by $V$, which represents the vertex set of the hypergraph.</li>
-            <li>hyperedge. Usually denoted by $E$, representing the hyperedge set of the
+            <li>Vertex. Typically denoted by $V$, which represents the <b>vertex set</b> of the hypergraph.</li>
+            <li>Hyperedge. Typically denoted by $E$, which means the <b>hyperedge set</b> of the
                 hypergraph.</li>
-            <li>weight. Usually denoted by $W$, which represents the weight of the hyperedge.</li>
-            <li>degree. The degree of a vertex represents how many hyperedges the vertex
-                belongs to, and the degree of a hyperedge represents how many vertices the
+            <li>Weight. Typically denoted by $W$, which represents the <b>weight</b> of the <b>hyperedge</b>.</li>
+            <li>Degree. The degree of a <b>vertex</b> represents how many <b>hyperedges</b> the vertex
+                belongs to, and the degree of a <b>hyperedge</b> represents how many <b>vertices</b> whichthe
                 hyperedge is connected to.</li>
-            <li>incidence matrix. $H_{i,j} = 1$ represents that vertex $i$ is in hyperedge
-                $j$, $H_{i,j} = 0$ represents that vertex $i$ is not in hyperedge $j$.
+            <li>Incidence Matrix. $H_{i,j} = 1$ represents that vertex $i$ is in hyperedge
+                $j$, $H_{i,j} = 0$ represents that vertex $i$ is not in hyperedge $j$. Noting that $H_{i,j}$ can also represent the importance of a vertex $i$ for a hyperedge $j$ when $0\le H_{i,j} \le 1$.
             </li>
         </ul>
-        <p>The chart of the degrees and incidence matrix of the above figure is given below.</p>
+        <p>We take the demo of Hypergraph as an example to explain those components via illustrating them in the following table.</p>
+
         <table>
-            <thead>
-                <tr>
-                    <th>vertex</th>
-                    <th>$v_1$</th>
-                    <th>$v_2$</th>
-                    <th>$v_3$</th>
-                    <th>$v_4$</th>
-                    <th>$v_5$</th>
-                    <th>hyperedge</th>
-                    <th>$e_1$</th>
-                    <th>$e_2$</th>
-                    <th>$e_3$</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>degree</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>degree</td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
+              <caption>Incidence Matrix</caption>
             <thead>
                 <tr>
                     <th></th>
@@ -1249,7 +1221,39 @@
             </tbody>
         </table>
 
-        <h3>Applications of HyperGraph</h3>
+<table>
+            <caption>Components of the Hypergraph</caption>
+            <thead>
+                <tr>
+                    <th>vertex</th>
+                    <th>$v_1$</th>
+                    <th>$v_2$</th>
+                    <th>$v_3$</th>
+                    <th>$v_4$</th>
+                    <th>$v_5$</th>
+                    <th>hyperedge</th>
+                    <th>$e_1$</th>
+                    <th>$e_2$</th>
+                    <th>$e_3$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>degree</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>degree</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Applications of Hypergraph</h3>
         <p>Compared with graphs, hypergraphs have a stronger <b>expressive ability</b> and unique advantages for modeling more <b>complex data</b>. Hypergraphs are useful in modeling such things as <b>satisfiability problems</b>, <b>databases</b>, <b>machine learning</b>, and <b>Steiner tree problems</b>. They have been extensively used in machine learning tasks as the <b>data model</b> and <b>classifier regularization</b>. The applications include <a href="https://link.springer.com/chapter/10.1007/978-3-030-65965-3_36">Recommendation System</a>, <a href="https://ieeexplore.ieee.org/document/8360131"> image retrieval</a>, and <a href="https://academic.oup.com/bioinformatics/article/25/21/2831/225855"> bioinformatics</a>. Representative hypergraph learning techniques include <a href="https://ieeexplore.ieee.org/document/9195129">hypergraph spectral clustering</a> that extends the spectral graph theory with hypergraph Laplacian and <a href="https://ieeexplore.ieee.org/document/6126507">hypergraph semi-supervised learning</a> that introduces extra hypergraph structural cost to restrict the learning results. For large-scale hypergraphs, a distributed <a href="https://ieeexplore.ieee.org/document/8790188">framework</a> built upon Apache Spark is also available.
         </p>
        
@@ -1374,7 +1378,7 @@
             be performed. Next, we briefly introduce four more mature hypergraph learning
             algorithms.</p>
 
-        <h3>Clustering With HyperGraph Learning</h3>
+        <h3>Clustering With Hypergraph Learning</h3>
 
         <figure>
             <div>
@@ -1401,7 +1405,7 @@
         <p>The interaction above shows how to deal with a clustering problem based on hypergraph
             learning, which divides 1000 samples into 4 clusters.</p>
 
-        <h3> Classification With HyperGraph Learning</h3>
+        <h3> Classification With Hypergraph Learning</h3>
 
         <p>
             MNIST is a picture dataset of handwritten digits.  Here we'll use the MNIST dataset which consists of greyscale handwritten digits. Each image is 28x28 pixels, you can see a sample below.
@@ -1531,7 +1535,7 @@
         <h3>ResMultiHGNN
             <a href="https://arxiv.org/abs/2105.00490">(RESIDUAL ENHANCED
             MULTI-HYPERGRAPH NEURAL NETWORK)</a></h3>
-        <p>HyperGraph Neural Network (HGNN) is currently the de-facto method for hypergraph
+        <p>Hypergraph Neural Network (HGNN) is currently the de-facto method for hypergraph
             representation learning. However, HGNN aims at single hypergraph learning and uses
             a pre-concatenation approach when confronting multi-modal datasets, which leads to
             sub-optimal exploitation of the inter-correlations of multi-modal hypergraphs. HGNN
