@@ -1124,7 +1124,7 @@
 
                 <p class="author">
 
-                    <span class="name">Mingzhi Xie</span>
+                    <span class="name">Minzhi Xie</span>
                 </p>
                 <p class="affiliation">
                     <span class="affiliation">Tsinghua University</span>
@@ -1144,7 +1144,9 @@
         <p>We will introduce the <b>basic concepts</b> of hypergraphs in the first place, then we will discuss several classic methods of
               <b>hypergraph generation</b>, and finally we will demonstrate four representative hypergraph learning <b>examples</b> from the shallower to the deeper.</p>
 
-        <h2> Hypergraph </h2>
+        <h2> A Brief Introduction to Hypergraph </h2>
+
+        <h3>What is a Hypergraph?</h3>
         <p>A hypergraph is a generalization of a graph in which an edge can join any number of
             vertices. In contrast, in an ordinary graph, an edge connects exactly two vertices. It is
             often desirable to study hypergraphs where all hyperedges have the <b>same cardinality</b>. For instance,
@@ -1159,9 +1161,8 @@
                 <b>Click on</b> the figure to see the relationship between graph and hypergraph.
             </figcaption>
         </figure>
-        <p>Compared with graphs, hypergraphs have a stronger expressive ability and unique advantages for modeling more complex data. Hypergraphs are useful in modeling such things as satisfiability problems, databases, machine learning, and Steiner tree problems. They have been extensively used in machine learning tasks as the data model and classifier regularization. The applications include recommender systems, image retrieval, and bioinformatics. Representative hypergraph learning techniques include hypergraph spectral clustering that extends the spectral graph theory with hypergraph Laplacian and hypergraph semi-supervised learning that introduces extra hypergraph structural cost to restrict the learning results. For large-scale hypergraphs, a distributed framework built using Apache Spark is also available.
-        </p>
-        <p>Hypergraph has the following basic concepts:</p>
+
+        <h3>Basic Components of A Hypergraph</h3>
         <ul>
             <li>vertex. Usually denoted by $V$, which represents the vertex set of the hypergraph.</li>
             <li>hyperedge. Usually denoted by $E$, representing the hyperedge set of the
@@ -1247,6 +1248,11 @@
                 </tr>
             </tbody>
         </table>
+
+        <h3>Applications of HyperGraph</h3>
+        <p>Compared with graphs, hypergraphs have a stronger <b>expressive ability</b> and unique advantages for modeling more <b>complex data</b>. Hypergraphs are useful in modeling such things as <b>satisfiability problems</b>, <b>databases</b>, <b>machine learning</b>, and <b>Steiner tree problems</b>. They have been extensively used in machine learning tasks as the <b>data model</b> and <b>classifier regularization</b>. The applications include <a href="https://link.springer.com/chapter/10.1007/978-3-030-65965-3_36">Recommendation System</a>, <a href="https://ieeexplore.ieee.org/document/8360131"> image retrieval</a>, and <a href="https://academic.oup.com/bioinformatics/article/25/21/2831/225855"> bioinformatics</a>. Representative hypergraph learning techniques include <a href="https://ieeexplore.ieee.org/document/9195129">hypergraph spectral clustering</a> that extends the spectral graph theory with hypergraph Laplacian and <a href="https://ieeexplore.ieee.org/document/6126507">hypergraph semi-supervised learning</a> that introduces extra hypergraph structural cost to restrict the learning results. For large-scale hypergraphs, a distributed <a href="https://ieeexplore.ieee.org/document/8790188">framework</a> built upon Apache Spark is also available.
+        </p>
+       
         <h2>HYPERGRAPH GENERATION</h2>
         <p>To formulate the data correlation with a hypergraph, the fifirst step is to construct a
             hypergraph from the data. The quality of the generated hypergraph structure directly
