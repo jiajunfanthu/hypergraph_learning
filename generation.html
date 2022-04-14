@@ -899,38 +899,46 @@
     var exps = ["figures/explicit1.svg", "figures/explicit2.svg", "figures/explicit3.svg", "figures/explicit4.svg", "figures/explicit5.svg", "figures/explicit6.svg"]; /*图片的地址 */
     var clus = ["figures/clustering1.svg", "figures/clustering2.svg", "figures/clustering3.svg", "figures/clustering4.svg"]; /*图片的地址 */
     var t_DHLs = ["figures/t-DHL1.png", "figures/t-DHL2.png", "figures/t-DHL3.png", "figures/t-DHL4.png", "figures/t-DHL5.png", "figures/t-DHL6.png"]; /*图片的地址 */
-  
+    // 图片自动切换：
+    function auto() {
+        document.getElementById("demo").src = demos[index];
+        index++;
+        if (index > demos.length - 1) {
+            index = 0;
+        }
+    }
+    setInterval("auto()", 500);  //每3秒重新运行函数auto()
 
 
     //图片点击切换：
     window.onload = function () {
 
-        // var obj1 = document.getElementById("img_hypergraph");
-        // var obj2 = document.getElementById("img_implicit");
-        // var obj3 = document.getElementById("img_explicit");
+        var obj1 = document.getElementById("img_hypergraph");
+        var obj2 = document.getElementById("img_implicit");
+        var obj3 = document.getElementById("img_explicit");
         var obj4 = document.getElementById("img_clustering");
         var obj5 = document.getElementById("img_tdhl");
 
-        // obj1.onclick = function () {
-        //     index1++;
-        //     if (index1 > hyps.length - 1)
-        //         index1 = 0;
-        //     obj1.src = hyps[index1];
-        // }
+        obj1.onclick = function () {
+            index1++;
+            if (index1 > hyps.length - 1)
+                index1 = 0;
+            obj1.src = hyps[index1];
+        }
 
-        // obj2.onclick = function () {
-        //     index2++;
-        //     if (index2 > imps.length - 1)
-        //         index2 = 0;
-        //     obj2.src = imps[index2];
-        // }
+        obj2.onclick = function () {
+            index2++;
+            if (index2 > imps.length - 1)
+                index2 = 0;
+            obj2.src = imps[index2];
+        }
 
-        // obj3.onclick = function () {
-        //     index3++;
-        //     if (index3 > exps.length - 1)
-        //         index3 = 0;
-        //     obj3.src = exps[index3];
-        // }
+        obj3.onclick = function () {
+            index3++;
+            if (index3 > exps.length - 1)
+                index3 = 0;
+            obj3.src = exps[index3];
+        }
 
         obj4.onclick = function () {
             index4++;
@@ -1045,19 +1053,347 @@
         </div>
     </distill-header>
     <title>A Gentle Introduction to Hypergraph Learning</title>
+    <!-- <link rel="stylesheet" href="./tst/style.e308ff8e.css">
+    <link rel="stylesheet" href="./tst/layerwise_trace.d38144f3.css">
+    <link rel="stylesheet" href="./tst/shuffle.90a7da43.css">
+    <link rel="stylesheet" href="./tst/text-as-graph.146f5ac8.css">
+    <link rel="stylesheet" href="./tst/pca-layers.889c7e67.css">
+    <link rel="stylesheet" href="./tst/gnn-playground.7fda89e6.css">
+    <link rel="stylesheet" href="./tst/mols-as-graph.f8d43714.css">
+    <link rel="stylesheet" href="./tst/shuffle-sm.e4a48acb.css">
+    <link rel="stylesheet" href="./tst/table.0b6daf45.css">
+    <link rel="stylesheet" href="./tst/graph-description.c0d85959.css">
+    <link rel="stylesheet" href="./tst/graph-description-embeddings.95e72025.css"> -->
 
     <d-title>
-        <h1> EXAMPLES OF HYPERGRAPH LEARNING</h1>
-    </d-title>
+        <h1> A Gentle Introduction to Hypergraph Learning</h1>
+        <p> A hypergraph is a generalization of a graph in which an edge can join any number of
+            vertices. In contrast, in an ordinary graph, an edge connects exactly two vertices. It is
+            often desirable to study hypergraphs where all hyperedges have the same cardinality;
+            a $k$-uniform hypergraph is a hypergraph such that all its hyperedges have size $k$. 
+        </p>
 
+        <p>
+             This page is an introduction to "Hypergraph Learning". A hypergraph composing of a
+            set of vertices and hyperedges is a generalization of a graph. Different from a simple
+            graph where two vertices are joined together by one edge, each hyperedge can
+            connect any number of vertices in a hypergraph. Hypergraph learning is a technique
+            conducting learning on a hypergraph structure.
+        </p>
+    </d-title>
+    <!-- <p style="color:#FFF;font-weight:bold;">内联样式</p> -->
+    <figure class="teaser">
+    <div id="BJ">
+        <img src="figures/hypergraph1.svg" id="demo" />
+    </div>
+                <figcaption>
+                    A Simple Example of HyperGraph.
+            </figcaption>
+</figure>
+
+    <d-byline>
+        <div class="byline grid">
+            <div class="authors-affiliations grid">
+                <h3>Authors</h3>
+                <h3>Affiliations</h3>
+
+                <p class="author">
+
+                    <span class="name">Fan Jiajun</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Luo Chengxiao</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Li Tianxiang</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Liu Zixuan</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Wu Tong</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+                <p class="author">
+
+                    <span class="name">Xie Mingzhi</span>
+                </p>
+                <p class="affiliation">
+                    <span class="affiliation">Tsinghua University</span>
+                </p>
+
+            </div>
+            <div>
+                <h3>Published</h3>
+
+                <p>April. 12, 2022</p>
+            </div>
+
+        </div>
+    </d-byline>
     <d-article>
+
+        <p><em>We first introduce the basic concepts of hypergraphs, then introduce common methods
+                of hypergraph generation and four mature hypergraph learning algorithms, and finally
+                show our experiments.
+            </em></p>
+        <h2> Hypergraph </h2>
+        <p>A hypergraph is a generalization of a graph in which an edge can join any number of
+            vertices. In contrast, in an ordinary graph, an edge connects exactly two vertices. It is
+            often desirable to study hypergraphs where all hyperedges have the same cardinality;
+            a $k$-uniform hypergraph is a hypergraph such that all
+            its hyperedges have size $k$.
+        </p>
+        <figure>
+            <div class="graph">
+                <img src="figures/hypergraph1.svg" id="img_hypergraph" />
+            </div>
+            <figcaption>
+                <b>Click </b> on the figure to see the relationship between graph and hypergraph.
+            </figcaption>
+        </figure>
+        <p>Compared with graphs, hypergraphs have stronger expressive ability and unique
+            advantages for modeling more complex data. Hypergraphs are useful in modelling
+            such things as satisfiability problems, databases, machine learning, and Steiner tree
+            problems. They have been extensively used in machine learning tasks as the data
+            model and classifier regularization. The applications include recommender
+            system, image etrieval, and bioinformatics. Representative hypergraph learning
+            techniques include hypergraph spectral clustering that extends the spectral graph
+            theory with hypergraph Laplacian, and hypergraph semi-supervised learning that
+            introduces extra hypergraph structural cost to restrict the learning results. For large
+            scale hypergraphs, a distributed framework built using Apache Spark is also available.
+        </p>
+        <p>Hypergraph has the following basic concepts:</p>
+        <ul>
+            <li>vertex. Usually denoted by $V$, which represents the vertex set of the hypergraph.</li>
+            <li>hyperedge. Usually denoted by $E$, representing the hyperedge set of the
+                hypergraph.</li>
+            <li>weight. Usually denoted by $W$, which represents the weight of the hyperedge.</li>
+            <li>degree. The degree of a vertex represents how many hyperedges the vertex
+                belongs to, and the degree of a hyperedge represents how many vertices the
+                hyperedge is connected to.</li>
+            <li>incidence matrix. $H_{i,j} = 1$ represents that vertex $i$ is in hyperedge
+                $j$, $H_{i,j} = 0$ represents that vertex $i$ is not in hyperedge $j$.
+            </li>
+        </ul>
+        <p>The chart of the degrees and incidence matrix of the above figure is given below.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>vertex</th>
+                    <th>$v_1$</th>
+                    <th>$v_2$</th>
+                    <th>$v_3$</th>
+                    <th>$v_4$</th>
+                    <th>$v_5$</th>
+                    <th>hyperedge</th>
+                    <th>$e_1$</th>
+                    <th>$e_2$</th>
+                    <th>$e_3$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>degree</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>degree</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>$e_1$</th>
+                    <th>$e_2$</th>
+                    <th>$e_3$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$v_1$</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>$v_2$</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>$v_3$</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>$v_4$</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>$v_5$</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>HYPERGRAPH GENERATION</h2>
+        <p>To formulate the data correlation with a hypergraph, the fifirst step is to construct a
+            hypergraph from the data. The quality of the generated hypergraph structure directly
+            affects the effectiveness of the data correlation modeling. The problem of how to
+            construct an effective hypergraph is not trivial and thereby has been extensively
+            investigated. Hypergraph generation can generally be divided into two categories:
+            implicit and explicit.</p>
+        <h3>Implicit</h3>
+        <p>The implicit hyperedges are defifined as the hyperedges that are not able to be directly
+            obtained from raw data and need to be reconstructed by establishing representations
+            and measurements. Implicit methods can be further divided into distance-based and
+            representation-based hypergraph generation method. These methods can be applied
+            to the tasks where we can create the representation of each subject and metrics to
+            describe the similarity between samples.</p>
+        <p>Representation-based hypergraph generation methods formulate the relations among
+            vertices through feature reconstruction.</p>
+        <p>Distance-based hypergraph generation approaches exploit the relations among
+            vertices using the distance in the feature space. The main objective is to fifind
+            neighboring vertices in the feature space and construct a hyperedge to connect them.
+            Generally, there are two ways to construct this hyperedge: nearest-neighbor searching
+            and clustering. In nearest-neighbor based methods, hyperedge construction needs to
+            fifind the nearest neighbors for each vertex. Different from nearest neighbor based
+            methods, the clustering-based methods aim to directly group all vertices into clusters
+            by a clustering algorithm such as k-means and connect all vertices in the same cluster
+            by a hyperedge (note that different scales of clustering results can be used to generate
+            multiple hyperedges).</p>
+        <p>For example, if the feature space is a two-dimensional space and the distance is
+            Euclidean distance, then several vertices closest to a center point form a hyperedge.</p>
+        <figure>
+            <div class="graph">
+                <img src="figures/implicit1.svg" id="img_implicit" />
+            </div>
+            <figcaption>
+                <b>Click on</b> the figure to see the construction of implicit hyperedges.
+            </figcaption>
+        </figure>
+        <h3>Explicit</h3>
+        <p>Explicit hyperedges can be established straightforwardly because the input data may
+            inherently contain some structural information. Explicit methods can be further divided
+            into attribute-based and network-based hypergraph generation method.</p>
+        <p>Network data are available in many applications, such as social networks, reaction
+            networks, cellular networks and brain networks. For these data, the network data can
+            be used to generate subject correlations.</p>
+        <p>Attribute-based hypergraph generation methods are those methods that employ the
+            attribute information to construct a hyperedge. In this example, the vertices sharing the
+            same attributes are linked by a hyperedge. Hyperedge in an attribute-based
+            hypergraph is regarded as a clique, and then the mean of the heat kernel weights of
+            pairwise edges in this clique can be used as the hyperedge weight.</p>
+        <p>For example, if the basic information of several classmates is given, and each
+            classmate acts as a vertex, then classmates with the same information can form a
+            hyperedge.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>student</th>
+                    <th>Chinese</th>
+                    <th>Math</th>
+                    <th>English</th>
+                    <th>Physics</th>
+                    <th>Chemistry</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td></td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td>1</td>
+                    <td></td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <figure>
+            <div>
+                <img src="figures/explicit1.svg" id="img_explicit" />
+            </div>
+            <figcaption>
+                Click on the figure to see the construction of explicit hyperedges.
+            </figcaption>
+        </figure>
+
+        <h2>EXAMPLES OF HYPERGRAPH LEARNING</h2>
 
         <p>After a hypergraph is constructed, learning tasks, such as label prediction of unlabeled
             vertices, dynamic structure update, and multi-modal learning on this hypergraph, can
             be performed. Next, we briefly introduce four more mature hypergraph learning
             algorithms.</p>
 
-        <h2>Clustering</h2>
+        <h3>Clustering</h3>
 
         <figure>
             <div>
@@ -1084,7 +1420,7 @@
         <p>The interaction above shows how to deal with a clustering problem based on hypergraph
             learning, which divides 1000 samples into 4 clusters.</p>
 
-        <h2> Classification </h2>
+        <h3> Classification </h3>
 
         <p>
             MNIST is a picture dataset of handwritten digits.  Here we'll use the MNIST dataset which consists of greyscale handwritten digits. Each image is 28x28 pixels, you can see a sample below.
@@ -1139,7 +1475,7 @@
 
 
 
-        <h2>t-DHL</h2>
+        <h3>t-DHL</h3>
         <p>t-DHL leverage a tensor representation to characterize the dynamic hypergraph
             structure more flexibly. Unlike the incidence matrix, not only weights but the number
             and order of hyperedges can also be changed when optimizing the tensor
@@ -1156,9 +1492,9 @@
                 Click on the figure to see the relationship between matrix-based model and tensor-based model.
             </figcaption>
         </figure>
-        <h2>Bi-MHG(Cross-Modality Microblog Sentiment
+        <h3>Bi-MHG(Cross-Modality Microblog Sentiment
             Prediction via Bi-Layer Multimodal
-            Hypergraph Learning)</h2>
+            Hypergraph Learning)</h3>
         <p>Microblog sentiment prediction is one of the common applications of hypergraph with
             wide application prospects. With the increasing proportion of multimodal tweets
             consisting of images, texts, and emoticons, new challenges have been raised to the
@@ -1184,9 +1520,9 @@
                 The framework of Bi-MHG.
             </figcaption>
         </figure>
-        <h2>HGNN(Multi-Scale Representation Learning
+        <h3>HGNN(Multi-Scale Representation Learning
             on Hypergraph for 3D Shape Retrieval and
-            Recognition)</h2>
+            Recognition)</h3>
         <p>MHGNN is a multi-scale representation learning method on hypergraph for 3D shape
             retrieval and recognition. Effective 3D shape retrieval and recognition are challenging
             but important tasks in computer vision research field, which have attracted much
@@ -1209,8 +1545,8 @@
                 The framework of HGNN.
             </figcaption>
         </figure>
-        <h2>ResMultiHGNN(RESIDUAL ENHANCED
-            MULTI-HYPERGRAPH NEURAL NETWORK)</h2>
+        <h3>ResMultiHGNN(RESIDUAL ENHANCED
+            MULTI-HYPERGRAPH NEURAL NETWORK)</h3>
         <p>HyperGraph Neural Network (HGNN) is currently the de-facto method for hypergraph
             representation learning. However, HGNN aims at single hypergraph learning and uses
             a pre-concatenation approach when confronting multi-modal datasets, which leads to
