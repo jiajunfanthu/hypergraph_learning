@@ -14,6 +14,82 @@
         }
     </style>
 
+
+ <style type="text/css">
+    
+    /* table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table caption{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+
+th,td{
+    border: 1px solid #999;
+    text-align: center;
+    padding: 20px 0;
+}
+
+table thead tr{
+    background-color: #008c8c;
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd){
+    background-color: #eee;
+}
+
+table tbody tr:hover{
+    background-color: #ccc;
+}
+
+table tbody tr td:first-child{
+    color: #f40;
+}
+
+table tfoot tr td{
+    text-align: right;
+    padding-right: 20px;
+}
+ */
+            /*表格样式*/            
+            table {
+                width: 90%;
+                background: #ccc;
+                margin: 10px auto;
+                border-collapse: collapse;
+    
+            }               
+            th,td {
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                border: 1px solid #ccc;
+            }       
+            th {
+                background: #eee;
+                font-weight: normal;
+            }       
+            tr {
+                background: #fff;
+            }       
+            tr:hover {
+                background: #cc0;
+            }       
+            td a {
+                color: #06f;
+                text-decoration: none;
+            }       
+            td a:hover {
+                color: #06f;
+                text-decoration: underline;
+            }
+        </style>
+
     <style id="distill-prerendered-styles" type="text/css">
         /*
        * Copyright 2018 The Distill Template Authors
@@ -59,7 +135,7 @@
         figure {
             margin: 0;
         }
-
+/* 
         table {
             border-collapse: collapse;
             border-spacing: 0;
@@ -80,7 +156,7 @@
         table tbody :first-child td {
             padding-top: 0.5em;
         }
-
+ */
         pre {
             overflow: auto;
             max-width: 100%;
@@ -742,7 +818,7 @@
         }
 
         /* Tables */
-
+/* 
         d-article table {
             border-collapse: collapse;
             margin-bottom: 1.5rem;
@@ -769,7 +845,7 @@
 
         d-article table tbody :first-child td {
             padding-top: 2px;
-        }
+        } */
 
         /*
        * Copyright 2018 The Distill Template Authors
@@ -1072,7 +1148,7 @@
         <img src="figures/hypergraph1.svg" id="demo" />
     </div>
                 <figcaption>
-                    A Simple Demonstration of Hypergraph.
+                    A Straightforward Demonstration of Hypergraph.
             </figcaption>
 </figure>
 
@@ -1258,56 +1334,60 @@
         </p>
        
         <h2>HYPERGRAPH GENERATION</h2>
-        <p>To formulate the data correlation with a hypergraph, the fifirst step is to construct a
+        <p>To capture the <b>data correlation</b> with a hypergraph, the first step is to <b>construct</b> a
             hypergraph from the data. The quality of the generated hypergraph structure directly
-            affects the effectiveness of the data correlation modeling. The problem of how to
-            construct an effective hypergraph is not trivial and thereby has been extensively
+            affects the <b>effectiveness</b> of the data correlation modeling. The problem of <em>how to
+            construct an effective hypergraph</em> is not trivial and thereby has been extensively
             investigated. Hypergraph generation can generally be divided into two categories:
-            implicit and explicit.</p>
-        <h3>Implicit Methods</h3>
-        <p>The implicit hyperedges are defifined as the hyperedges that are not able to be directly
-            obtained from raw data and need to be reconstructed by establishing representations
-            and measurements. Implicit methods can be further divided into distance-based and
-            representation-based hypergraph generation method. These methods can be applied
-            to the tasks where we can create the representation of each subject and metrics to
-            describe the similarity between samples.</p>
-        <p>Representation-based hypergraph generation methods formulate the relations among
-            vertices through feature reconstruction.</p>
-        <p>Distance-based hypergraph generation approaches exploit the relations among
-            vertices using the distance in the feature space. The main objective is to fifind
-            neighboring vertices in the feature space and construct a hyperedge to connect them.
-            Generally, there are two ways to construct this hyperedge: nearest-neighbor searching
-            and clustering. In nearest-neighbor based methods, hyperedge construction needs to
-            fifind the nearest neighbors for each vertex. Different from nearest neighbor based
-            methods, the clustering-based methods aim to directly group all vertices into clusters
-            by a clustering algorithm such as k-means and connect all vertices in the same cluster
-            by a hyperedge (note that different scales of clustering results can be used to generate
-            multiple hyperedges).</p>
-        <p>For example, if the feature space is a two-dimensional space and the distance is
-            Euclidean distance, then several vertices closest to a center point form a hyperedge.</p>
+            <b>implicit</b> and <b>explicit</b>.</p>
+
+
+        <h3>Implicit Hypergaph Generation</h3>
+        <p>The implicit hyperedges are defined as the hyperedges that are <b>not able</b> to be directly obtained from raw data and need to be <b>reconstructed</b> by establishing representations and measurements. Implicit methods can be further divided into <b>distance-based</b> and <b>representation-based</b> hypergraph generation methods. These methods can be applied to the tasks where we can create the representation of each subject and metrics to describe the similarity between samples.</p>
+
+        <h4>Representation-based Hypergraph Generation</h4>
+
+        <p> Representation-based hypergraph generation <a href="https://ieeexplore.ieee.org/document/7064739">methods</a> formulate the relations among
+            vertices through <b>feature reconstruction</b>.</p>
+        
+        <h4>Distance-based Hypergraph Generation</h4>
+        
+        <p>
+
+            Distance-based hypergraph generation <a href="https://ieeexplore.ieee.org/document/5206795">approaches</a> to exploit the relations among vertices using <b>the distance</b> in the <b>feature space</b>. The main objective is to find <b>neighboring vertices</b>  in the feature space and construct a hyperedge to connect them. Specifically, there are two ways to construct this hyperedge: <b>nearest-neighbor searching</b> and <b>clustering</b>. In nearest-neighbor-based methods, hyperedge construction needs to find the <b>nearest neighbors</b> for each vertex. Different from nearest neighbor-based methods, the clustering-based methods aim to directly <b>group</b> all vertices into clusters by a clustering algorithm such as <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.520.6737&rep=rep1&type=pdf">k-means</a> and connect all vertices in <b>the same cluster</b> by a hyperedge. Noting that different <b>scales</b> of clustering results can be used to generate <b>multiple hyperedges.</b></p>
+
+        <h4>An Example of Distance-based Hypergraph Generation</h4>
+
+        <p>Let's take an exmaple of Distance-based Hypergraph Generation in the following to help understand hypergraph generation. We considered the examples where the feature space is a <b>two-dimensional space</b> and the distance is
+            <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a>, then several vertices closest to a center point form a hyperedge.</p>
+
         <figure>
             <div class="graph">
                 <img src="figures/implicit1.svg" id="img_implicit" />
             </div>
             <figcaption>
-                Click on the figure to see the construction of implicit hyperedges.
+                A Straightforward Example of Distance-based Hypergraph Generation. <br><b>Click on</b> the figure to see the construction of implicit hyperedges.
             </figcaption>
         </figure>
-        <h3>Explicit Methods</h3>
-        <p>Explicit hyperedges can be established straightforwardly because the input data may
-            inherently contain some structural information. Explicit methods can be further divided
-            into attribute-based and network-based hypergraph generation method.</p>
-        <p>Network data are available in many applications, such as social networks, reaction
-            networks, cellular networks and brain networks. For these data, the network data can
-            be used to generate subject correlations.</p>
+
+        <h3>Explicit Hypergaph Generation</h3>
+
+        <p>Explicit hyperedges can be established straightforwardly because the input data may inherently contain some <b>structural information</b>. Explicit methods can be further divided into <a href="https://arxiv.org/abs/1503.05782">attribute-based</a> and <a href="https://link.springer.com/chapter/10.1007/978-3-030-20081-7_11">network-based</a> hypergraph generation methods.</p>
+        
+        <h4>Network-based Hypergraph Generation</h4>
+        <p>Network data are available in many applications, such as <a href="https://exascale.info/assets/pdf/yang2019www.pdf">social networks</a>, <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007384">reaction networks</a>, <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000385">cellular networks</a>, and <a href="https://epubs.siam.org/doi/abs/10.1137/S1052623497330963?journalCode=sjope8">brain networks</a>. For these data, the network data can be used to generate subject correlations.</p>
+
+        <h4>Attribute-based Hypergraph Generation</h4>
+
         <p>Attribute-based hypergraph generation methods are those methods that employ the
-            attribute information to construct a hyperedge. In this example, the vertices sharing the
+            <b>attribute information</b> to construct a hyperedge.  For example, the vertices sharing the
             same attributes are linked by a hyperedge. Hyperedge in an attribute-based
-            hypergraph is regarded as a clique, and then the mean of the heat kernel weights of
-            pairwise edges in this clique can be used as the hyperedge weight.</p>
-        <p>For example, if the basic information of several classmates is given, and each
-            classmate acts as a vertex, then classmates with the same information can form a
-            hyperedge.</p>
+            hypergraph is regarded as a <b>clique</b>, and then the mean of the heat kernel weights of
+            pairwise edges in this clique can be used as the <b>hyperedge weight</b>.</p>
+
+        <h4>An Example of Attribute-based Hypergraph Generation</h4>
+
+        <p>Let's take an example of Attribute-based Hypergraph Generation in the following to help understand hypergraph generation. We considered the examples where the basic information of several classmates is given, and each classmate acts as a vertex, then classmates with the same information can form a hyperedge.</p>
         <table>
             <thead>
                 <tr>
@@ -1373,10 +1453,10 @@
 
         <h2>EXAMPLES OF HYPERGRAPH LEARNING</h2>
 
-        <p>After a hypergraph is constructed, learning tasks, such as label prediction of unlabeled
-            vertices, dynamic structure update, and multi-modal learning on this hypergraph, can
-            be performed. Next, we briefly introduce four more mature hypergraph learning
-            algorithms.</p>
+        <p>After a hypergraph is <b>constructed</b>, learning tasks, such as <a href="https://ojs.aaai.org/index.php/AAAI/article/view/6170">label prediction</a> of unlabeled
+            vertices, <a href="https://www.ijcai.org/proceedings/2018/0439.pdf">dynamic structure update</a>, and <a href="https://www.sciencedirect.com/science/article/abs/pii/S0925231215009388">multi-modal learning</a> on this hypergraph, can
+            be performed. In the following, we briefly introduce four representative hypergraph learning
+            methods.</p>
 
         <h3>Clustering With Hypergraph Learning</h3>
 
