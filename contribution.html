@@ -16,9 +16,8 @@
 
 
 
- <style type="text/css">
-    
-    /* table{
+    <style type="text/css">
+        /* table{
     width: 100%;
     border-collapse: collapse;
 }
@@ -57,41 +56,48 @@ table tfoot tr td{
     padding-right: 20px;
 }
  */
-            /*表格样式*/            
-            table {
-                width: 90%;
-                background: #ccc;
-                margin: 10px auto;
-                border-collapse: collapse;
-    
-            }               
-            th,td {
-                height: 25px;
-                line-height: 25px;
-                text-align: center;
-                border: 1px solid #ccc;
-            }       
-            th {
-                background: #eee;
-                font-weight: normal;
-            }       
-            tr {
-                background: #fff;
-            }       
-            tr:hover {
-                background: #cc0;
-            }       
-            td a {
-                color: #06f;
-                text-decoration: none;
-            }       
-            td a:hover {
-                color: #06f;
-                text-decoration: underline;
-            }
-        </style>
+        /*表格样式*/
+        table {
+            width: 90%;
+            background: #ccc;
+            margin: 10px auto;
+            border-collapse: collapse;
 
-        
+        }
+
+        th,
+        td {
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background: #eee;
+            font-weight: normal;
+        }
+
+        tr {
+            background: #fff;
+        }
+
+        tr:hover {
+            background: #cc0;
+        }
+
+        td a {
+            color: #06f;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            color: #06f;
+            text-decoration: underline;
+        }
+    </style>
+
+
     <style id="distill-prerendered-styles" type="text/css">
         /*
        * Copyright 2018 The Distill Template Authors
@@ -940,10 +946,10 @@ table tfoot tr td{
             height: 345px;
         }
 
-        figcaption{
-        text-align: center;
+        figcaption {
+            text-align: center;
         }
-        
+
         #demo {
             /*图片宽度，高度 */
             width: 640px;
@@ -952,7 +958,7 @@ table tfoot tr td{
     </style>
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-        </script>
+    </script>
 
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
@@ -971,12 +977,24 @@ table tfoot tr td{
     var index3 = 0;
     var index4 = 0;
     var index5 = 0;
-    var demos = ["figures/hypergraph1.svg", "figures/hypergraph2.svg", "figures/hypergraph3.svg", "figures/hypergraph4.svg"]
-    var hyps = ["figures/hypergraph1.svg", "figures/hypergraph2.svg", "figures/hypergraph3.svg", "figures/hypergraph4.svg"]; /*图片的地址 */
-    var imps = ["figures/implicit1.svg", "figures/implicit2.svg", "figures/implicit3.svg", "figures/implicit4.svg", "figures/implicit5.svg", "figures/implicit6.svg"]; /*图片的地址 */
-    var exps = ["figures/explicit1.svg", "figures/explicit2.svg", "figures/explicit3.svg", "figures/explicit4.svg", "figures/explicit5.svg", "figures/explicit6.svg"]; /*图片的地址 */
-    var clus = ["figures/clustering1.svg", "figures/clustering2.svg", "figures/clustering3.svg", "figures/clustering4.svg"]; /*图片的地址 */
-    var t_DHLs = ["figures/t-DHL1.png", "figures/t-DHL2.png", "figures/t-DHL3.png", "figures/t-DHL4.png", "figures/t-DHL5.png", "figures/t-DHL6.png"]; /*图片的地址 */
+    var demos = ["figures/hypergraph1.svg", "figures/hypergraph2.svg", "figures/hypergraph3.svg",
+        "figures/hypergraph4.svg"
+    ]
+    var hyps = ["figures/hypergraph1.svg", "figures/hypergraph2.svg", "figures/hypergraph3.svg",
+        "figures/hypergraph4.svg"
+    ]; /*图片的地址 */
+    var imps = ["figures/implicit1.svg", "figures/implicit2.svg", "figures/implicit3.svg", "figures/implicit4.svg",
+        "figures/implicit5.svg", "figures/implicit6.svg"
+    ]; /*图片的地址 */
+    var exps = ["figures/explicit1.svg", "figures/explicit2.svg", "figures/explicit3.svg", "figures/explicit4.svg",
+        "figures/explicit5.svg", "figures/explicit6.svg"
+    ]; /*图片的地址 */
+    var clus = ["figures/clustering1.svg", "figures/clustering2.svg", "figures/clustering3.svg",
+        "figures/clustering4.svg"
+    ]; /*图片的地址 */
+    var t_DHLs = ["figures/t-DHL1.png", "figures/t-DHL2.png", "figures/t-DHL3.png", "figures/t-DHL4.png",
+        "figures/t-DHL5.png", "figures/t-DHL6.png"
+    ]; /*图片的地址 */
     // 图片自动切换：
     function auto() {
         document.getElementById("demo").src = demos[index];
@@ -985,7 +1003,7 @@ table tfoot tr td{
             index = 0;
         }
     }
-    setInterval("auto()", 500);  //每3秒重新运行函数auto()
+    setInterval("auto()", 500); //每3秒重新运行函数auto()
 
 
     //图片点击切换：
@@ -1125,7 +1143,7 @@ table tfoot tr td{
                 HyperGraph Learning
             </a>
             <nav class="nav">
-                <a href="https://www.jiajunfan.com">Contact</a> 
+                <a href="https://www.jiajunfan.com">Contact</a>
                 <a href="contribution.html">Contribution</a>
                 <!-- <a href="https://distill.pub/journal/">Submit</a> -->
             </nav>
@@ -1167,17 +1185,20 @@ table tfoot tr td{
                     <li>
                         Overall project progress manager.
                         <ol>
-                            <li>Front-end and back-end task allocation, task delivery control, task quality control.</li>
+                            <li>Front-end and back-end task allocation, task delivery control, task quality control.
+                            </li>
                             <li>Front-end and back-end project docking, interface design.</li>
-                            <li>Regular meetings are held to connect progress and solve various difficult problems at the front and back ends.</li>
+                            <li>Regular meetings are held to connect progress and solve various difficult problems at
+                                the front and back ends.</li>
                         </ol>
                     </li>
-
+                    <!-- 123 -->
                     <li>
                         Head of Backend Development Team.
                         <ol>
                             <li>
-                                Complete the code writing of experiments related to classification tasks, visualization of results and front-end deployment.
+                                Complete the code writing of experiments related to classification tasks, visualization
+                                of results and front-end deployment.
                             </li>
                         </ol>
 
@@ -1186,7 +1207,8 @@ table tfoot tr td{
                     <li>
                         Front-end development technical support.
                         <ol>
-                            <li>Assist the front-end to optimize the web code, refactor the response function and the corresponding interface.</li>
+                            <li>Assist the front-end to optimize the web code, refactor the response function and the
+                                corresponding interface.</li>
                             <li>Find all cited references and implement all linked citations in the front end.</li>
                             <li>Complete all grammar checks independently, with emphasis on bolding.</li>
                         </ol>
@@ -1196,10 +1218,12 @@ table tfoot tr td{
                         Web Page Deployment and Quality Control
                         <ol>
                             <li>
-                                Independently implements the entire process of deploying web pages (local) to the Internet.
+                                Independently implements the entire process of deploying web pages (local) to the
+                                Internet.
                             </li>
                             <li>
-                                Successfully deployed the job to https://www.jiajunfan.com/hl/main for people all over the world to visit.
+                                Successfully deployed the job to https://www.jiajunfan.com/hl/main for people all over
+                                the world to visit.
                             </li>
                         </ol>
                     </li>
@@ -1209,11 +1233,18 @@ table tfoot tr td{
             <li>
                 Chengxiao Luo:15%
                 <ol>
-                    <li>Read the paper, especially the experimental part. Investigate the implementation and drawing of hypergraphs, expand the very simple code in THU_HyperG on github, so that it can display more details of hypergraphs, and reproduce experiments such as classification and clustering mentioned in the paper.</li>
+                    <li>Read the paper, especially the experimental part. Investigate the implementation and drawing of
+                        hypergraphs, expand the very simple code in THU_HyperG on github, so that it can display more
+                        details of hypergraphs, and reproduce experiments such as classification and clustering
+                        mentioned in the paper.</li>
 
-                    <li>In order to facilitate visualization, supplement the experiment of mnist handwritten digit recognition using hypergraph learning, and provide data such as the topological structure of hypergraph.</li>
+                    <li>In order to facilitate visualization, supplement the experiment of mnist handwritten digit
+                        recognition using hypergraph learning, and provide data such as the topological structure of
+                        hypergraph.</li>
 
-                    <li>Connect with the front-end, put forward a list of visualization requirements to the front-end, provide the front-end with the data format required for visualization, and perform preliminary hypergraph visualization and draw a preliminary sketch.</li>
+                    <li>Connect with the front-end, put forward a list of visualization requirements to the front-end,
+                        provide the front-end with the data format required for visualization, and perform preliminary
+                        hypergraph visualization and draw a preliminary sketch.</li>
                 </ol>
             </li>
 
@@ -1221,7 +1252,7 @@ table tfoot tr td{
                 Tianxiang Li:18%
                 <ol>
                     <li>
-                        
+
                     </li>
                 </ol>
             </li>
